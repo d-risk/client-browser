@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {AboutComponent} from './about/about.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {HomeComponent} from './home/home.component';
+import {LogInComponent} from './log-in/log-in.component';
 import {NavigationComponent} from './navigation/navigation.component';
 
 import {RoutingModule} from './routing/routing.module';
@@ -15,7 +16,8 @@ import {RoutingModule} from './routing/routing.module';
     AboutComponent,
     DashboardComponent,
     HomeComponent,
-    NavigationComponent
+    LogInComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
