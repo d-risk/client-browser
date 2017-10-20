@@ -8,6 +8,7 @@ import {HomeComponent} from './home/home.component';
 import {LogInComponent} from './log-in/log-in.component';
 import {LogOutComponent} from './log-out/log-out.component';
 import {NavigationComponent} from './navigation/navigation.component';
+import {SignUpComponent} from './sign-up/sign-up.component';
 
 import {RoutingModule} from './routing/routing.module';
 
@@ -20,6 +21,7 @@ import {RoutingModule} from './routing/routing.module';
     LogInComponent,
     LogOutComponent,
     NavigationComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
