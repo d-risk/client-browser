@@ -1,4 +1,5 @@
 <nav>
-  <a routerLink="/" routerLinkActive="active">{{currentUser ? 'Dashboard' : 'Home'}}</a>
+  <a routerLink="/" routerLinkActive="active">Home</a>
+  <a *ngIf="currentUser" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
   <a routerLink="/about" routerLinkActive="active">About</a>
 </nav>
