@@ -32,7 +32,6 @@ import {AuthenticationService} from './authentication.service';
     HttpClientModule,
     ReactiveFormsModule,
     RoutingModule,
-    // InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]
