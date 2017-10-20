@@ -1,6 +1,17 @@
-<nav>
-  <a routerLink="/" routerLinkActive="active">Home</a>
-  <a *ngIf="currentUser" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-  <a routerLink="/about" routerLinkActive="active">About</a>
-  <a routerLink="/login" routerLinkActive="active">Login</a>
-</nav>
+<mat-toolbar color="primary">
+  <span>Company Logo</span>
+  <a routerLink="/" routerLinkActive="active" mat-button>
+    <mat-icon>home</mat-icon>
+    Home
+  </a>
+  <a *ngIf="currentUser" routerLink="/dashboard" routerLinkActive="active" mat-button>
+    <mat-icon>dashboard</mat-icon>
+    Dashboard
+  </a>
+  <a routerLink="/about" routerLinkActive="active" mat-button>
+    <mat-icon>info</mat-icon>
+    About
+  </a>
+  <span class="toolbar-filler"></span>
+  <a routerLink="/login" routerLinkActive="active" mat-button>Login</a>
+</mat-toolbar>
