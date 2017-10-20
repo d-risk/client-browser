@@ -1,4 +1,6 @@
-import {Component,  OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+import {User} from '../user';
 
 @Component({
   selector: 'app-navigation',
@@ -6,10 +8,13 @@ import {Component,  OnInit} from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  currentUser: User;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
 }
