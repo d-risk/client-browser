@@ -1,5 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {HttpModule} from '@angular/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {AboutComponent} from './about/about.component';
@@ -11,6 +13,8 @@ import {NavigationComponent} from './navigation/navigation.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
 
 import {RoutingModule} from './routing/routing.module';
+
+import {AuthenticationService} from './authentication.service';
 
 @NgModule({
   declarations: [
@@ -25,9 +29,12 @@ import {RoutingModule} from './routing/routing.module';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    ReactiveFormsModule,
     RoutingModule,
+    // InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
