@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {User} from '../user';
+import {AuthenticationService} from '../authentication.service';
 
 @Component({
   selector: 'app-navigation',
@@ -8,13 +8,14 @@ import {User} from '../user';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  currentUser: User;
 
-  constructor() {
+  constructor(private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
+  isAuthenticated(): boolean {
+    return this.authenticationService.isAuthenticated();
+  }
 }
