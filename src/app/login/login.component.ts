@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   authenticating = false;
   returnUrl: string;
   loginForm: FormGroup;
+  hide = true;
 
   constructor(private authenticationService: AuthenticationService,
               private route: ActivatedRoute,
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
               private formBuilder: FormBuilder) {
     this.loginForm = formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      remember: [false],
     });
   }
 
@@ -32,12 +34,16 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  login() {
+  onLogin() {
     this.authenticating = true;
     this.authenticationService.login(this.user.username, this.user.password)
       .subscribe(
         next => this.router.navigate([this.returnUrl]),
         error => this.authenticating = false);
+  }
+
+  onHide() {
+    this.hide = !this.hide;
   }
 
 }
