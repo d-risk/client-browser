@@ -17,6 +17,7 @@ import {MaterialDesignModule} from './material-design/material-design.module';
 
 import {AuthenticationService} from './authentication.service';
 import {UserService} from './user.service';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {UserService} from './user.service';
     LogoutComponent,
     NavigationComponent,
     SignUpComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
