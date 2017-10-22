@@ -6,7 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {AboutComponent} from './about/about.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {HomeComponent} from './home/home.component';
+import {MarketingComponent} from './marketing/marketing.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {NavigationComponent} from './navigation/navigation.component';
@@ -23,7 +23,7 @@ import {UserService} from './user.service';
     AppComponent,
     AboutComponent,
     DashboardComponent,
-    HomeComponent,
+    MarketingComponent,
     LoginComponent,
     LogoutComponent,
     NavigationComponent,
