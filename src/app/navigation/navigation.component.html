@@ -1,17 +1,34 @@
-<mat-toolbar color="primary">
-  <span>Company Logo</span>
-  <a routerLink="/" routerLinkActive="active" mat-button>
-    <mat-icon>home</mat-icon>
-    Home
-  </a>
-  <a *ngIf="isAuthenticated()" routerLink="/dashboard" routerLinkActive="active" mat-button>
-    <mat-icon>dashboard</mat-icon>
-    Dashboard
-  </a>
-  <a routerLink="/about" routerLinkActive="active" mat-button>
-    <mat-icon>info</mat-icon>
-    About
-  </a>
-  <span class="toolbar-filler"></span>
-  <a routerLink="/login" routerLinkActive="active" mat-button>Login</a>
-</mat-toolbar>
+<header>
+  <mat-toolbar color="primary">
+    <span>Company Logo</span>
+    <mat-nav-list>
+      <mat-list-item>
+        <a [routerLink]="'/'" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" mat-button>
+          <mat-icon mat-list-icon>home</mat-icon>
+          Home
+        </a>
+      </mat-list-item>
+      <mat-list-item *ngIf="isAuthenticated()">
+        <a routerLink="/dashboard" routerLinkActive="active" mat-button>
+          <mat-icon mat-list-icon>dashboard</mat-icon>
+          Dashboard
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a routerLink="/about" routerLinkActive="active" mat-button>
+          <mat-icon mat-list-icon>info</mat-icon>
+          About
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
+    <span class="toolbar-filler"></span>
+    <mat-nav-list>
+      <mat-list-item>
+        <ng-container [ngSwitch]="isAuthenticated()">
+          <a *ngSwitchCase="true" (click)="logout()" mat-button>Logout</a>
+          <a *ngSwitchDefault routerLink="/login" routerLinkActive="active" mat-button>Login</a>
+        </ng-container>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-toolbar>
+</header>
