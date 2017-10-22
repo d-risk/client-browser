@@ -6,6 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {AboutComponent} from './about/about.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {FooterComponent} from './footer/footer.component';
 import {MarketingComponent} from './marketing/marketing.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
@@ -17,28 +18,32 @@ import {MaterialDesignModule} from './material-design/material-design.module';
 
 import {AuthenticationService} from './authentication.service';
 import {UserService} from './user.service';
-import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+
     AboutComponent,
     DashboardComponent,
+    FooterComponent,
     MarketingComponent,
     LoginComponent,
     LogoutComponent,
     NavigationComponent,
     SignUpComponent,
-    FooterComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+
     RoutingModule,
     MaterialDesignModule,
   ],
-  providers: [AuthenticationService, UserService],
+  providers: [
+    AuthenticationService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
