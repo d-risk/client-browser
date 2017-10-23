@@ -4,8 +4,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 
 import {AppRoutingModule} from './app-routing.module';
-import {NavigationModule} from './components/navigation/navigation.module';
-import {FooterModule} from './components/footer/footer.module';
+import {NavigationModule} from './modules/navigation/navigation.module';
+import {FooterModule} from './modules/footer/footer.module';
 import {PageNotFoundModule} from './modules/page-not-found/page-not-found.module';
 
 @NgModule({
