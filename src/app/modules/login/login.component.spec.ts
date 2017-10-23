@@ -5,7 +5,7 @@ import {MatCardModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, Mat
 
 import {LoginComponent} from './login.component';
 import {MaterialDesignModule} from '../../material-design/material-design.module';
-import {AuthenticationService} from '../../authentication.service';
+import {AuthenticationService} from '../../services/authentication.service';
 import {RouterModule, Routes} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';

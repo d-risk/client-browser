@@ -12,7 +12,7 @@ import {LogoutModule} from '../logout/logout.module';
 import {MarketingModule} from '../marketing/marketing.module';
 import {NavigationRoutingModule} from './navigation-routing.module';
 
-import {AuthenticationService} from '../../authentication.service';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @NgModule({
   imports: [

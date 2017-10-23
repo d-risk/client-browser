@@ -18,7 +18,7 @@ import {LoginRoutingModule} from './login-routing.module';
 import {ResetPasswordModule} from '../reset-password/reset-password.module';
 import {SignUpModule} from '../sign-up/sign-up.module';
 
-import {AuthenticationService} from '../../authentication.service';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @NgModule({
   imports: [
