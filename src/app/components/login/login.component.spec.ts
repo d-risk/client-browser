@@ -4,8 +4,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatCardModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, MatProgressSpinnerModule} from '@angular/material';
 
 import {LoginComponent} from './login.component';
-import {MaterialDesignModule} from '../material-design/material-design.module';
-import {AuthenticationService} from '../authentication.service';
+import {MaterialDesignModule} from '../../material-design/material-design.module';
+import {AuthenticationService} from '../../authentication.service';
 import {RouterModule, Routes} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';

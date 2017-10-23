@@ -4,14 +4,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
-import {AboutComponent} from './about/about.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {FooterComponent} from './footer/footer.component';
-import {MarketingComponent} from './marketing/marketing.component';
-import {LoginComponent} from './login/login.component';
-import {LogoutComponent} from './logout/logout.component';
-import {NavigationComponent} from './navigation/navigation.component';
-import {SignUpComponent} from './sign-up/sign-up.component';
+import {AboutComponent} from './components/about/about.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {MarketingComponent} from './components/marketing/marketing.component';
+import {LoginComponent} from './components/login/login.component';
+import {LogoutComponent} from './components/logout/logout.component';
+import {NavigationComponent} from './components/navigation/navigation.component';
+import {SignUpComponent} from './components/sign-up/sign-up.component';
 
 import {RoutingModule} from './routing/routing.module';
 import {MaterialDesignModule} from './material-design/material-design.module';
