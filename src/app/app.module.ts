@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {NavigationModule} from './components/navigation/navigation.module';
 import {FooterModule} from './components/footer/footer.module';
+import {PageNotFoundModule} from './modules/page-not-found/page-not-found.module';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import {FooterModule} from './components/footer/footer.module';
 
     FooterModule,
     NavigationModule,
+    PageNotFoundModule,
 
     AppRoutingModule,
   ],
