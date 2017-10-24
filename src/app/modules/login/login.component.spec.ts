@@ -19,7 +19,7 @@ import {ResetPasswordComponent} from '../reset-password/reset-password.component
 
 import {AuthenticationService} from '../../services/authentication.service';
 
-import createSpyObj = jasmine.createSpyObj;
+import {createMockAuthenticationService} from '../../../testing/service-stub';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -27,7 +27,7 @@ describe('LoginComponent', () => {
   let mockAuthenticationService;
 
   beforeEach(async(() => {
-    mockAuthenticationService = createSpyObj<AuthenticationService>('authenticationService', ['login', 'logout', 'isAuthenticated']);
+    mockAuthenticationService = createMockAuthenticationService();
 
     TestBed.configureTestingModule({
       imports: [
