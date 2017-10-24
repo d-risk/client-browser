@@ -43,6 +43,6 @@ module.exports = function (config) {
         ]
       }
     },
-    singleRun: false
+    singleRun: !!process.env.TRAVIS
   });
 };
