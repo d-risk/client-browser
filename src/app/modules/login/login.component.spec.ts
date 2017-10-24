@@ -14,12 +14,13 @@ import {
 } from '@angular/material';
 
 import {LoginComponent} from './login.component';
-import {SignUpComponent} from '../sign-up/sign-up.component';
-import {ResetPasswordComponent} from '../reset-password/reset-password.component';
 
 import {AuthenticationService} from '../../services/authentication.service';
 
 import {createMockAuthenticationService} from '../../../testing/service-stub';
+
+class MockComponent {
+}
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -44,11 +45,11 @@ describe('LoginComponent', () => {
         MatProgressSpinnerModule,
 
         RouterTestingModule.withRoutes([
-          {path: 'reset', component: ResetPasswordComponent},
-          {path: 'signup', component: SignUpComponent},
+          {path: 'reset', component: MockComponent},
+          {path: 'signup', component: MockComponent},
         ]),
       ],
-      declarations: [LoginComponent, ResetPasswordComponent, SignUpComponent],
+      declarations: [LoginComponent],
       providers: [
         {provide: AuthenticationService, useValue: mockAuthenticationService},
       ],
