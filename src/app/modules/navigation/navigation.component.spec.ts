@@ -7,7 +7,7 @@ import {NavigationComponent} from './navigation.component';
 
 import {AuthenticationService} from '../../services/authentication.service';
 
-import {createMockAuthenticationService, MockComponent} from '../../../testing/mock-stub';
+import {createMockAuthenticationService, FakeComponent} from '../../../testing/mock-stub';
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -26,11 +26,11 @@ describe('NavigationComponent', () => {
         MatToolbarModule,
 
         RouterTestingModule.withRoutes([
-          {path: 'about', component: MockComponent},
-          {path: 'dashboard', component: MockComponent},
-          {path: 'login', component: MockComponent},
-          {path: 'logout', component: MockComponent},
-          {path: '', component: MockComponent},
+          {path: 'about', component: FakeComponent},
+          {path: 'dashboard', component: FakeComponent},
+          {path: 'login', component: FakeComponent},
+          {path: 'logout', component: FakeComponent},
+          {path: '', component: FakeComponent},
         ]),
       ],
       declarations: [NavigationComponent],

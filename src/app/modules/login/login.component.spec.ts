@@ -17,7 +17,7 @@ import {LoginComponent} from './login.component';
 
 import {AuthenticationService} from '../../services/authentication.service';
 
-import {createMockAuthenticationService, MockComponent} from '../../../testing/mock-stub';
+import {createMockAuthenticationService, FakeComponent} from '../../../testing/mock-stub';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -42,8 +42,8 @@ describe('LoginComponent', () => {
         MatProgressSpinnerModule,
 
         RouterTestingModule.withRoutes([
-          {path: 'reset', component: MockComponent},
-          {path: 'signup', component: MockComponent},
+          {path: 'reset', component: FakeComponent},
+          {path: 'signup', component: FakeComponent},
         ]),
       ],
       declarations: [LoginComponent],
