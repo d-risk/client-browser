@@ -1,40 +1,56 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
-import {MatCardModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, MatProgressSpinnerModule} from '@angular/material';
-
-import {LoginComponent} from './login.component';
-import {MaterialDesignModule} from '../../material-design/material-design.module';
-import {AuthenticationService} from '../../services/authentication.service';
-import {RouterModule, Routes} from '@angular/router';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {ReactiveFormsModule} from '@angular/forms';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
+
+import {LoginComponent} from './login.component';
 import {SignUpComponent} from '../sign-up/sign-up.component';
+import {ResetPasswordComponent} from '../reset-password/reset-password.component';
+
+import {AuthenticationService} from '../../services/authentication.service';
+
+import createSpyObj = jasmine.createSpyObj;
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let mockAuthenticationService;
 
   beforeEach(async(() => {
+    mockAuthenticationService = createSpyObj<AuthenticationService>('authenticationService', ['login', 'logout', 'isAuthenticated']);
 
     TestBed.configureTestingModule({
-      declarations: [LoginComponent],
       imports: [
         HttpClientTestingModule,
         ReactiveFormsModule,
-        RouterTestingModule.withRoutes([
-          {path: '/reset', component: LoginComponent},
-          {path: '/signup', component: SignUpComponent},
-        ]),
+        NoopAnimationsModule,
 
+        MatButtonModule,
         MatCardModule,
         MatCheckboxModule,
         MatFormFieldModule,
         MatIconModule,
-        MatProgressSpinnerModule
+        MatInputModule,
+        MatProgressSpinnerModule,
+
+        RouterTestingModule.withRoutes([
+          {path: 'reset', component: ResetPasswordComponent},
+          {path: 'signup', component: SignUpComponent},
+        ]),
       ],
+      declarations: [LoginComponent, ResetPasswordComponent, SignUpComponent],
       providers: [
-        {provides: AuthenticationService, useClass: AuthenticationService},
+        {provide: AuthenticationService, useValue: mockAuthenticationService},
       ],
     })
       .compileComponents();
