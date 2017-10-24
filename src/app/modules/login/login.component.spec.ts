@@ -17,7 +17,7 @@ import {LoginComponent} from './login.component';
 
 import {AuthenticationService} from '../../services/authentication.service';
 
-import {createMockAuthenticationService} from '../../../testing/service-stub';
+import {createMockAuthenticationService} from '../../../testing/mock-stub';
 
 class MockComponent {
 }
