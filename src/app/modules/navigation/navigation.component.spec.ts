@@ -7,7 +7,7 @@ import {NavigationComponent} from './navigation.component';
 
 import {AuthenticationService} from '../../services/authentication.service';
 
-import {createMockAuthenticationService, FakeComponent} from '../../../testing/mock-stub';
+import {createMockAuthenticationService, FakeComponent} from '../../../testing/mock-stub.spec';
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
