@@ -1,0 +1,11 @@
+<mat-form-field>
+  <input #searchBox type="text" matInput [formControl]="searchForm" [matAutocomplete]="auto"
+         (keyup)="search(searchBox.value)" title="Search for a Company by Name">
+  <mat-icon matSuffix>search</mat-icon>
+  <mat-placeholder>Enter a company's name</mat-placeholder>
+</mat-form-field>
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-option *ngFor="let company of companies | async" [value]="company.name">
+    {{company.name}}
+  </mat-option>
+</mat-autocomplete>
