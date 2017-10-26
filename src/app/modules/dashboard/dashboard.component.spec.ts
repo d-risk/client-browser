@@ -5,7 +5,7 @@ import {MatAutocompleteModule, MatCardModule, MatFormFieldModule, MatIconModule,
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import {DashboardComponent} from './dashboard.component';
-import {CompanyNameSearchService} from './company-name-search/company-name-search.service';
+import {CompanyNameSearchService} from './company-search/company-name-search.service';
 import {createMockComponent, FakeComponent} from '../../../testing/mock-stub.spec';
 import {createMockCompanyNameSearchService} from '../../../testing/mock-stub.spec';
 
