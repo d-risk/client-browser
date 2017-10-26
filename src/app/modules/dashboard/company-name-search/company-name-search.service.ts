@@ -3,14 +3,14 @@ import {Observable} from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
 
-export interface Company {
+export interface CompanyName {
   name: string;
 }
 
 @Injectable()
 export class CompanyNameSearchService {
 
-  companies: Company[] = [
+  companies: CompanyName[] = [
     {name: 'AAA'},
     {name: 'ABC'},
     {name: 'BBB'},
@@ -22,9 +22,9 @@ export class CompanyNameSearchService {
   constructor() {
   }
 
-  search(text: string): Observable<Company[]> {
+  search(text: string): Observable<CompanyName[]> {
     // this.companies.filter(company => company.name.startsWith(text));
-    return Observable.of<Company[]>(this.companies.filter(company => company.name.toLowerCase().startsWith(text.toLowerCase())));
+    return Observable.of<CompanyName[]>(this.companies.filter(company => company.name.toLowerCase().startsWith(text.toLowerCase())));
   }
 
 }

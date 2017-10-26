@@ -8,7 +8,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
-import {Company, CompanyNameSearchService} from './company-name-search.service';
+import {CompanyName, CompanyNameSearchService} from './company-name-search.service';
 
 @Component({
   selector: 'app-company-name-search',
@@ -17,7 +17,7 @@ import {Company, CompanyNameSearchService} from './company-name-search.service';
 })
 export class CompanyNameSearchComponent implements OnInit {
   searchForm: FormControl = new FormControl();
-  companies: Observable<Company[]>;
+  companies: Observable<CompanyName[]>;
   private searchText = new Subject<string>();
 
   constructor(private companySearchService: CompanyNameSearchService) {
@@ -27,11 +27,11 @@ export class CompanyNameSearchComponent implements OnInit {
     this.companies = this.searchText
       .debounceTime(300)
       .distinctUntilChanged()
-      .switchMap(text => text ? this.companySearchService.search(text) : Observable.of<Company[]>([]))
+      .switchMap(text => text ? this.companySearchService.search(text) : Observable.of<CompanyName[]>([]))
       .catch(error => {
         // TODO proper error logging
         console.log(error);
-        return Observable.of<Company[]>([]);
+        return Observable.of<CompanyName[]>([]);
       });
   }
 
