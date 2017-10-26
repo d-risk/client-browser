@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatAutocompleteModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
 
-import {CompanyNameSearchComponent} from './company-search.component';
+import {CompanySearchComponent} from './company-search.component';
 import {CompanyNameSearchService} from './company-name-search.service';
 
 @NgModule({
@@ -19,9 +19,9 @@ import {CompanyNameSearchService} from './company-name-search.service';
     MatIconModule,
     MatInputModule,
   ],
-  declarations: [CompanyNameSearchComponent],
-  exports: [CompanyNameSearchComponent],
+  declarations: [CompanySearchComponent],
+  exports: [CompanySearchComponent],
   providers: [CompanyNameSearchService],
 })
-export class CompanyNameSearchModule {
+export class CompanySearchModule {
 }

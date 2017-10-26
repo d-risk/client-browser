@@ -3,13 +3,13 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatAutocompleteModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
 
-import {CompanyNameSearchComponent} from './company-search.component';
+import {CompanySearchComponent} from './company-search.component';
 import {CompanyNameSearchService} from './company-name-search.service';
 import {createMockCompanyNameSearchService} from '../../../../testing/mock-stub.spec';
 
-describe('CompanyNameSearchComponent', () => {
-  let component: CompanyNameSearchComponent;
-  let fixture: ComponentFixture<CompanyNameSearchComponent>;
+describe('CompanySearchComponent', () => {
+  let component: CompanySearchComponent;
+  let fixture: ComponentFixture<CompanySearchComponent>;
   let mockCompanySearchService: CompanyNameSearchService;
 
   beforeEach(async(() => {
@@ -26,7 +26,7 @@ describe('CompanyNameSearchComponent', () => {
         MatIconModule,
         MatInputModule,
       ],
-      declarations: [CompanyNameSearchComponent],
+      declarations: [CompanySearchComponent],
       providers: [
         {provide: CompanyNameSearchService, useValue: mockCompanySearchService}
       ],
@@ -35,7 +35,7 @@ describe('CompanyNameSearchComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CompanyNameSearchComponent);
+    fixture = TestBed.createComponent(CompanySearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

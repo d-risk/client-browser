@@ -15,7 +15,7 @@ import {CompanyName, CompanyNameSearchService} from './company-name-search.servi
   templateUrl: './company-search.component.html',
   styleUrls: ['./company-search.component.css']
 })
-export class CompanyNameSearchComponent implements OnInit {
+export class CompanySearchComponent implements OnInit {
   searchForm: FormControl = new FormControl();
   companies: Observable<CompanyName[]>;
   private searchText = new Subject<string>();
