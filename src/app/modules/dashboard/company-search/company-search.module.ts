@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatAutocompleteModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
 
-import {CompanyNameSearchComponent} from './company-name-search.component';
+import {CompanyNameSearchComponent} from './company-search.component';
 import {CompanyNameSearchService} from './company-name-search.service';
 
 @NgModule({

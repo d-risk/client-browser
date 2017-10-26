@@ -3,7 +3,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatAutocompleteModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
 
-import {CompanyNameSearchComponent} from './company-name-search.component';
+import {CompanyNameSearchComponent} from './company-search.component';
 import {CompanyNameSearchService} from './company-name-search.service';
 import {createMockCompanyNameSearchService} from '../../../../testing/mock-stub.spec';
 

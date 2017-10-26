@@ -12,8 +12,8 @@ import {CompanyName, CompanyNameSearchService} from './company-name-search.servi
 
 @Component({
   selector: 'app-company-name-search',
-  templateUrl: './company-name-search.component.html',
-  styleUrls: ['./company-name-search.component.css']
+  templateUrl: './company-search.component.html',
+  styleUrls: ['./company-search.component.css']
 })
 export class CompanyNameSearchComponent implements OnInit {
   searchForm: FormControl = new FormControl();
