@@ -3,7 +3,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule, MatTabsModule} from '@angular/material';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
-import {CompanyReportSearchComponent} from './company-report-search.component';
+import {CompanyReportSearchComponent} from './company-report.component';
 import {CompanyReportSearchService} from './company-report-search.service';
 import {createMockCompanyReportSearchService} from '../../../../testing/mock-stub.spec';
 

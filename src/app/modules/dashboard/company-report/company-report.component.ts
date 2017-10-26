@@ -4,8 +4,8 @@ import {CompanyReportSearchService} from './company-report-search.service';
 
 @Component({
   selector: 'app-company-report-search',
-  templateUrl: './company-report-search.component.html',
-  styleUrls: ['./company-report-search.component.css']
+  templateUrl: './company-report.component.html',
+  styleUrls: ['./company-report.component.css']
 })
 export class CompanyReportSearchComponent implements OnInit {
   stats = {
