@@ -5,15 +5,18 @@ import {MatAutocompleteModule, MatCardModule, MatFormFieldModule, MatIconModule,
 
 import {CompanySearchComponent} from './company-search.component';
 import {CompanyNameSearchService} from './company-name-search.service';
-import {createMockCompanyNameSearchService} from '../../../../testing/mock-stub.spec';
+import {createMockCompanyNameSearchService, createMockCompanyReportSearchService} from '../../../../testing/mock-stub.spec';
+import {CompanyReportSearchService} from './company-report-search.service';
 
 describe('CompanySearchComponent', () => {
   let component: CompanySearchComponent;
   let fixture: ComponentFixture<CompanySearchComponent>;
-  let mockCompanySearchService: CompanyNameSearchService;
+  let mockCompanyNameSearchService: CompanyNameSearchService;
+  let mockCompanyReportSearchService: CompanyReportSearchService;
 
   beforeEach(async(() => {
-    mockCompanySearchService = createMockCompanyNameSearchService();
+    mockCompanyNameSearchService = createMockCompanyNameSearchService();
+    mockCompanyReportSearchService = createMockCompanyReportSearchService();
 
     TestBed.configureTestingModule({
       imports: [
@@ -28,7 +31,8 @@ describe('CompanySearchComponent', () => {
       ],
       declarations: [CompanySearchComponent],
       providers: [
-        {provide: CompanyNameSearchService, useValue: mockCompanySearchService}
+        {provide: CompanyNameSearchService, useValue: mockCompanyNameSearchService},
+        {provide: CompanyReportSearchService, useValue: mockCompanyReportSearchService},
       ],
     })
       .compileComponents();

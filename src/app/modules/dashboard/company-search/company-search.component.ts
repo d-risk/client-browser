@@ -9,6 +9,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
 import {CompanyName, CompanyNameSearchService} from './company-name-search.service';
+import {CompanyReportSearchService} from './company-report-search.service';
 
 @Component({
   selector: 'app-company-name-search',
@@ -20,14 +21,14 @@ export class CompanySearchComponent implements OnInit {
   companies: Observable<CompanyName[]>;
   private searchText = new Subject<string>();
 
-  constructor(private companySearchService: CompanyNameSearchService) {
+  constructor(private companyNameSearchService: CompanyNameSearchService, private companyReportSearchService: CompanyReportSearchService) {
   }
 
   ngOnInit() {
     this.companies = this.searchText
       .debounceTime(300)
       .distinctUntilChanged()
-      .switchMap(text => text ? this.companySearchService.search(text) : Observable.of<CompanyName[]>([]))
+      .switchMap(text => text ? this.companyNameSearchService.search(text) : Observable.of<CompanyName[]>([]))
       .catch(error => {
         // TODO proper error logging
         console.log(error);
@@ -35,7 +36,11 @@ export class CompanySearchComponent implements OnInit {
       });
   }
 
-  search(text: string): void {
+  onNameSearch(text: string): void {
     this.searchText.next(text);
+  }
+
+  onReportSearch(text: string): void {
+    this.companyReportSearchService.search(text);
   }
 }
