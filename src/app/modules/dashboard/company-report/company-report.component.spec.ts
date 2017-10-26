@@ -3,13 +3,13 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule, MatTabsModule} from '@angular/material';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
-import {CompanyReportSearchComponent} from './company-report.component';
+import {CompanyReportComponent} from './company-report.component';
 import {CompanyReportSearchService} from './company-report-search.service';
 import {createMockCompanyReportSearchService} from '../../../../testing/mock-stub.spec';
 
-describe('CompanyReportSearchComponent', () => {
-  let component: CompanyReportSearchComponent;
-  let fixture: ComponentFixture<CompanyReportSearchComponent>;
+describe('CompanyReportComponent', () => {
+  let component: CompanyReportComponent;
+  let fixture: ComponentFixture<CompanyReportComponent>;
   let mockCompanyReportSearchService: CompanyReportSearchService;
 
   beforeEach(async(() => {
@@ -24,7 +24,7 @@ describe('CompanyReportSearchComponent', () => {
 
         NgxChartsModule,
       ],
-      declarations: [CompanyReportSearchComponent],
+      declarations: [CompanyReportComponent],
       providers: [
         {provide: CompanyReportSearchService, useValue: mockCompanyReportSearchService}
       ]
@@ -33,7 +33,7 @@ describe('CompanyReportSearchComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CompanyReportSearchComponent);
+    fixture = TestBed.createComponent(CompanyReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

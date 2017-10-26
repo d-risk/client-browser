@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
 import {CompanyReportSearchService} from './company-report-search.service';
 
 @Component({
@@ -7,7 +6,7 @@ import {CompanyReportSearchService} from './company-report-search.service';
   templateUrl: './company-report.component.html',
   styleUrls: ['./company-report.component.css']
 })
-export class CompanyReportSearchComponent implements OnInit {
+export class CompanyReportComponent implements OnInit {
   stats = {
     revenue: {
       name: 'Revenue',

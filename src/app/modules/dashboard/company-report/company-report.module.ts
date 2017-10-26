@@ -4,7 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule, MatTabsModule} from '@angular/material';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
-import {CompanyReportSearchComponent} from './company-report.component';
+import {CompanyReportComponent} from './company-report.component';
 import {CompanyReportSearchService} from './company-report-search.service';
 
 @NgModule({
@@ -17,9 +17,9 @@ import {CompanyReportSearchService} from './company-report-search.service';
 
     NgxChartsModule,
   ],
-  declarations: [CompanyReportSearchComponent],
-  exports: [CompanyReportSearchComponent],
+  declarations: [CompanyReportComponent],
+  exports: [CompanyReportComponent],
   providers: [CompanyReportSearchService],
 })
-export class CompanyReportSearchModule {
+export class CompanyReportModule {
 }
