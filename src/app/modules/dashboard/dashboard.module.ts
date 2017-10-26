@@ -4,7 +4,7 @@ import {MatCardModule} from '@angular/material';
 
 import {DashboardComponent} from './dashboard.component';
 import {CompanyNameSearchModule} from './company-name-search/company-name-search.module';
-import {CompanyReportSearchModule} from './company-report-search/company-report-search.module';
+import {CompanyReportSearchModule} from './company-report/company-report-search.module';
 
 @NgModule({
   imports: [
