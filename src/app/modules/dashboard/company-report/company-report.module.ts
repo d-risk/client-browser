@@ -5,7 +5,7 @@ import {MatCardModule, MatTabsModule} from '@angular/material';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import {CompanyReportComponent} from './company-report.component';
-import {CompanyReportSearchService} from './company-report-search.service';
+import {CompanyReportSearchService} from '../company-search/company-report-search.service';
 
 @NgModule({
   imports: [
