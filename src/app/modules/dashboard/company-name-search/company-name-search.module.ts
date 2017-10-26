@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatAutocompleteModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
 
 import {CompanyNameSearchComponent} from './company-name-search.component';
+import {CompanyNameSearchService} from './company-name-search.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {CompanyNameSearchComponent} from './company-name-search.component';
     MatInputModule,
   ],
   declarations: [CompanyNameSearchComponent],
-  exports: [CompanyNameSearchComponent]
+  exports: [CompanyNameSearchComponent],
+  providers: [CompanyNameSearchService],
 })
 export class CompanyNameSearchModule {
 }
