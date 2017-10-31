@@ -34,7 +34,7 @@ describe('DashboardComponent', () => {
       declarations: [
         DashboardComponent,
         createMockComponent({selector: 'app-company-name-search'}),
-        createMockComponent({selector: 'app-company-report-search'}),
+        createMockComponent({selector: 'app-profile'}),
       ],
       providers: [
         {provide: CompanyNameSearchService, useValue: mockCompanySearchService}

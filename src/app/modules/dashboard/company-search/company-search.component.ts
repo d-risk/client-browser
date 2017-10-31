@@ -9,7 +9,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
 import {CompanyName, CompanyNameSearchService} from './company-name-search.service';
-import {CompanyProfileSearchService} from './company-profile-search.service';
+import {ProfileSearchService} from './profile-search.service';
 
 @Component({
   selector: 'app-company-name-search',
@@ -21,7 +21,7 @@ export class CompanySearchComponent implements OnInit {
   companies: Observable<CompanyName[]>;
   private searchText = new Subject<string>();
 
-  constructor(private companyNameSearchService: CompanyNameSearchService, private companyReportSearchService: CompanyProfileSearchService) {
+  constructor(private companyNameSearchService: CompanyNameSearchService, private companyReportSearchService: ProfileSearchService) {
   }
 
   ngOnInit() {

@@ -7,7 +7,7 @@ import {MatAutocompleteModule, MatButtonModule, MatCardModule, MatFormFieldModul
 
 import {CompanySearchComponent} from './company-search.component';
 import {CompanyNameSearchService} from './company-name-search.service';
-import {CompanyProfileSearchService} from './company-profile-search.service';
+import {ProfileSearchService} from './profile-search.service';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import {CompanyProfileSearchService} from './company-profile-search.service';
   ],
   declarations: [CompanySearchComponent],
   exports: [CompanySearchComponent],
-  providers: [CompanyNameSearchService, CompanyProfileSearchService],
+  providers: [CompanyNameSearchService, ProfileSearchService],
 })
 export class CompanySearchModule {
 }

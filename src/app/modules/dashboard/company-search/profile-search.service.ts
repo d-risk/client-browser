@@ -26,7 +26,7 @@ export interface Series {
 }
 
 @Injectable()
-export class CompanyProfileSearchService {
+export class ProfileSearchService {
 
   constructor(private http: Http) {
   }

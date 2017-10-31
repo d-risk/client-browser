@@ -3,14 +3,14 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule, MatTabsModule} from '@angular/material';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
-import {CompanyReportComponent} from './company-report.component';
-import {CompanyProfileSearchService} from '../company-search/company-profile-search.service';
+import {ProfileComponent} from './profile.component';
+import {ProfileSearchService} from '../company-search/profile-search.service';
 import {createMockCompanyReportSearchService} from '../../../../testing/mock-stub.spec';
 
-describe('CompanyReportComponent', () => {
-  let component: CompanyReportComponent;
-  let fixture: ComponentFixture<CompanyReportComponent>;
-  let mockCompanyReportSearchService: CompanyProfileSearchService;
+describe('ProfileComponent', () => {
+  let component: ProfileComponent;
+  let fixture: ComponentFixture<ProfileComponent>;
+  let mockCompanyReportSearchService: ProfileSearchService;
 
   beforeEach(async(() => {
     mockCompanyReportSearchService = createMockCompanyReportSearchService();
@@ -24,16 +24,16 @@ describe('CompanyReportComponent', () => {
 
         NgxChartsModule,
       ],
-      declarations: [CompanyReportComponent],
+      declarations: [ProfileComponent],
       providers: [
-        {provide: CompanyProfileSearchService, useValue: mockCompanyReportSearchService}
+        {provide: ProfileSearchService, useValue: mockCompanyReportSearchService}
       ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CompanyReportComponent);
+    fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
