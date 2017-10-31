@@ -17,7 +17,10 @@ export class CompanyNameSearchService {
   search(text: string): Observable<CompanyName[]> {
     return this.http
       .get(`api/companies/?name=${text}`)
-      .map(response => response.json() as CompanyName[]);
+      .map(response => {
+        console.log('response = ' + JSON.stringify(response));
+        return response.json() as CompanyName[];
+      });
   }
 
 }
