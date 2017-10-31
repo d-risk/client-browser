@@ -35,6 +35,16 @@ export class FakeBackendModule {
           console.log('backend: response = ' + JSON.stringify(response));
           c.mockRespond(response);
         }
+      } else if (c.request.url.startsWith('api/profiles')) {
+        const exec = /\?name=([^?=&]+)/.exec(c.request.url);
+        if (exec && exec[1]) {
+          response = new Response(new ResponseOptions({
+            status: 200,
+            body: data.getProfile(exec[1])
+          }));
+          console.log('backend: response = ' + JSON.stringify(response));
+          c.mockRespond(response);
+        }
       }
     });
   }
