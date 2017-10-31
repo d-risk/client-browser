@@ -1,5 +1,5 @@
-import {CompanyName} from '../company-search/company-name-search.service';
-import {CompanyProfile, Data, Series, Stat} from '../company-search/company-profile-search.service';
+import {CompanyName} from '../modules/dashboard/company-search/company-name-search.service';
+import {CompanyProfile, Data, Series, Stat} from '../modules/dashboard/company-search/company-profile-search.service';
 
 function stats(items: [{
                  name: string,
