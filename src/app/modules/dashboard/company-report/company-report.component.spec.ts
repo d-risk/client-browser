@@ -4,13 +4,13 @@ import {MatCardModule, MatTabsModule} from '@angular/material';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import {CompanyReportComponent} from './company-report.component';
-import {CompanyReportSearchService} from '../company-search/company-report-search.service';
+import {CompanyProfileSearchService} from '../company-search/company-profile-search.service';
 import {createMockCompanyReportSearchService} from '../../../../testing/mock-stub.spec';
 
 describe('CompanyReportComponent', () => {
   let component: CompanyReportComponent;
   let fixture: ComponentFixture<CompanyReportComponent>;
-  let mockCompanyReportSearchService: CompanyReportSearchService;
+  let mockCompanyReportSearchService: CompanyProfileSearchService;
 
   beforeEach(async(() => {
     mockCompanyReportSearchService = createMockCompanyReportSearchService();
@@ -26,7 +26,7 @@ describe('CompanyReportComponent', () => {
       ],
       declarations: [CompanyReportComponent],
       providers: [
-        {provide: CompanyReportSearchService, useValue: mockCompanyReportSearchService}
+        {provide: CompanyProfileSearchService, useValue: mockCompanyReportSearchService}
       ]
     })
       .compileComponents();

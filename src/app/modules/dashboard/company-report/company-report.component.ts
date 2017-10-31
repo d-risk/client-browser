@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {CompanyReportSearchService} from '../company-search/company-report-search.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {CompanyProfile, CompanyProfileSearchService} from '../company-search/company-profile-search.service';
 
 @Component({
   selector: 'app-company-report-search',
@@ -8,13 +8,12 @@ import {CompanyReportSearchService} from '../company-search/company-report-searc
 })
 export class CompanyReportComponent implements OnInit {
 
-  constructor(private companyReportSearchService: CompanyReportSearchService) {
+  @Input() profile: CompanyProfile;
+
+  constructor(private companyReportSearchService: CompanyProfileSearchService) {
   }
 
   ngOnInit() {
   }
 
-  onSelect(event) {
-    console.log(event);
-  }
 }

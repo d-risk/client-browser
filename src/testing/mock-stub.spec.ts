@@ -1,7 +1,7 @@
 import {AuthenticationService} from '../app/services/authentication.service';
 import {Component} from '@angular/core';
 import {CompanyNameSearchService} from '../app/modules/dashboard/company-search/company-name-search.service';
-import {CompanyReportSearchService} from '../app/modules/dashboard/company-search/company-report-search.service';
+import {CompanyProfileSearchService} from '../app/modules/dashboard/company-search/company-profile-search.service';
 
 export function createMockAuthenticationService(): AuthenticationService {
   return jasmine.createSpyObj<AuthenticationService>('authenticationService', ['login', 'logout', 'isAuthenticated']);
@@ -11,8 +11,8 @@ export function createMockCompanyNameSearchService(): CompanyNameSearchService {
   return jasmine.createSpyObj<CompanyNameSearchService>('companyNameSearchService', ['search']);
 }
 
-export function createMockCompanyReportSearchService(): CompanyReportSearchService {
-  return jasmine.createSpyObj<CompanyReportSearchService>('companyReportSearchService', ['search']);
+export function createMockCompanyReportSearchService(): CompanyProfileSearchService {
+  return jasmine.createSpyObj<CompanyProfileSearchService>('companyReportSearchService', ['search']);
 }
 
 export class FakeComponent {

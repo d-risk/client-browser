@@ -7,22 +7,22 @@
 </mat-card>
 <mat-card>
   <mat-tab-group>
-    <mat-tab *ngFor="let stat of values()" [label]="stat.name">
-      <ngx-charts-line-chart
-        [view]="[700, 400]"
-        [scheme]="{domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']}"
-        [results]="stat.data"
-        gradient="true"
-        xAxis="true"
-        yAxis="true"
-        legend="false"
-        showXAxisLabel="true"
-        showYAxisLabel="true"
-        [xAxisLabel]="stat.xAxisLabel"
-        [yAxisLabel]="stat.yAxisLabel"
-        autoScale="true"
-        (select)="onSelect($event)">
-      </ngx-charts-line-chart>
-    </mat-tab>
+    <!--<mat-tab *ngFor="let stat of values()" [label]="stat.name">-->
+      <!--<ngx-charts-line-chart-->
+        <!--[view]="[700, 400]"-->
+        <!--[scheme]="{domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']}"-->
+        <!--[results]="stat.data"-->
+        <!--gradient="true"-->
+        <!--xAxis="true"-->
+        <!--yAxis="true"-->
+        <!--legend="false"-->
+        <!--showXAxisLabel="true"-->
+        <!--showYAxisLabel="true"-->
+        <!--[xAxisLabel]="stat.xAxisLabel"-->
+        <!--[yAxisLabel]="stat.yAxisLabel"-->
+        <!--autoScale="true"-->
+        <!--(select)="onSelect($event)">-->
+      <!--</ngx-charts-line-chart>-->
+    <!--</mat-tab>-->
   </mat-tab-group>
 </mat-card>
