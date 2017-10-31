@@ -30,8 +30,8 @@ export class CompanySearchComponent implements OnInit {
       .distinctUntilChanged()
       .switchMap(text => text ? this.companyNameSearchService.search(text) : Observable.of<CompanyName[]>([]))
       .catch(error => {
-        // TODO proper error logging
-        console.log(error);
+        // TODO proper error control: if an error occurs, the loop should not stop
+        console.log('error = ' + error);
         return Observable.of<CompanyName[]>([]);
       });
   }
