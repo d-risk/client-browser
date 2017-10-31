@@ -2,7 +2,7 @@ import {CompanyName} from '../company-search/company-name-search.service';
 import {CompanyProfile} from '../company-search/company-report-search.service';
 import {Observable} from 'rxjs/Observable';
 
-export class FakeReportGenerator {
+export class FakeData {
   companies: CompanyName[] = [
     {name: 'AAA'},
     {name: 'ABC'},
@@ -63,8 +63,10 @@ export class FakeReportGenerator {
     this.stats.debtCoverageRatio.data.push(u);
   }
 
-  searchCompanyNames(text: string): Observable<CompanyName[]> {
-    return Observable.of<CompanyName[]>(this.companies.filter(company => company.name.toLowerCase().startsWith(text.toLowerCase())));
+  names(): CompanyName[] {
+    return this.profiles.map(profile => {
+      return {name: profile.name};
+    });
   }
 
   getReport(text: string): Observable<CompanyProfile> {
