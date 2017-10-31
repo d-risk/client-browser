@@ -5,7 +5,7 @@ import {MatCardModule, MatTabsModule} from '@angular/material';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import {ProfileComponent} from './profile.component';
-import {ProfileSearchService} from '../company-search/profile-search.service';
+import {ProfileService} from '../search/profile.service';
 
 @NgModule({
   imports: [
@@ -19,7 +19,7 @@ import {ProfileSearchService} from '../company-search/profile-search.service';
   ],
   declarations: [ProfileComponent],
   exports: [ProfileComponent],
-  providers: [ProfileSearchService],
+  providers: [ProfileService],
 })
-export class CompanyReportModule {
+export class ProfileModule {
 }

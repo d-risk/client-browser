@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CompanyProfile, ProfileSearchService} from '../company-search/profile-search.service';
+import {CompanyProfile, ProfileService} from '../search/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,9 +8,9 @@ import {CompanyProfile, ProfileSearchService} from '../company-search/profile-se
 })
 export class ProfileComponent implements OnInit {
 
-  @Input() profile: CompanyProfile;
+  profile: CompanyProfile;
 
-  constructor(private companyReportSearchService: ProfileSearchService) {
+  constructor(private profileService: ProfileService) {
   }
 
   ngOnInit() {

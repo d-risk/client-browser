@@ -5,17 +5,17 @@ import {MatAutocompleteModule, MatCardModule, MatFormFieldModule, MatIconModule,
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import {DashboardComponent} from './dashboard.component';
-import {CompanyNameSearchService} from './company-search/company-name-search.service';
+import {CompanyService} from './search/company.service';
 import {createMockComponent, FakeComponent} from '../../../testing/mock-stub.spec';
-import {createMockCompanyNameSearchService} from '../../../testing/mock-stub.spec';
+import {createMockCompanyService} from '../../../testing/mock-stub.spec';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
-  let mockCompanySearchService: CompanyNameSearchService;
+  let mockCompanyService: CompanyService;
 
   beforeEach(async(() => {
-    mockCompanySearchService = createMockCompanyNameSearchService();
+    mockCompanyService = createMockCompanyService();
 
     TestBed.configureTestingModule({
       imports: [
@@ -33,11 +33,11 @@ describe('DashboardComponent', () => {
       ],
       declarations: [
         DashboardComponent,
-        createMockComponent({selector: 'app-company-name-search'}),
+        createMockComponent({selector: 'app-search'}),
         createMockComponent({selector: 'app-profile'}),
       ],
       providers: [
-        {provide: CompanyNameSearchService, useValue: mockCompanySearchService}
+        {provide: CompanyService, useValue: mockCompanyService}
       ],
     })
       .compileComponents();

@@ -3,8 +3,8 @@ import {CommonModule} from '@angular/common';
 import {MatCardModule} from '@angular/material';
 
 import {DashboardComponent} from './dashboard.component';
-import {CompanySearchModule} from './company-search/company-search.module';
-import {CompanyReportModule} from './profile/profile.module';
+import {SearchModule} from './search/search.module';
+import {ProfileModule} from './profile/profile.module';
 
 @NgModule({
   imports: [
@@ -12,8 +12,8 @@ import {CompanyReportModule} from './profile/profile.module';
 
     MatCardModule,
 
-    CompanySearchModule,
-    CompanyReportModule,
+    SearchModule,
+    ProfileModule,
   ],
   declarations: [DashboardComponent],
 })

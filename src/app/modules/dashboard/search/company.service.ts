@@ -9,7 +9,7 @@ export interface CompanyName {
 }
 
 @Injectable()
-export class CompanyNameSearchService {
+export class CompanyService {
 
   constructor(private http: Http) {
   }

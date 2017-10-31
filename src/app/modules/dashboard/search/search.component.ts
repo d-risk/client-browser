@@ -8,27 +8,27 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
-import {CompanyName, CompanyNameSearchService} from './company-name-search.service';
-import {ProfileSearchService} from './profile-search.service';
+import {CompanyName, CompanyService} from './company.service';
+import {ProfileService} from './profile.service';
 
 @Component({
-  selector: 'app-company-name-search',
-  templateUrl: './company-search.component.html',
-  styleUrls: ['./company-search.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class CompanySearchComponent implements OnInit {
+export class SearchComponent implements OnInit {
   searchForm: FormControl = new FormControl();
   companies: Observable<CompanyName[]>;
   private searchText = new Subject<string>();
 
-  constructor(private companyNameSearchService: CompanyNameSearchService, private companyReportSearchService: ProfileSearchService) {
+  constructor(private companyService: CompanyService, private profileService: ProfileService) {
   }
 
   ngOnInit() {
     this.companies = this.searchText
       .debounceTime(300)
       .distinctUntilChanged()
-      .switchMap(text => text ? this.companyNameSearchService.search(text) : Observable.of<CompanyName[]>([]))
+      .switchMap(text => text ? this.companyService.search(text) : Observable.of<CompanyName[]>([]))
       .catch(error => {
         // TODO proper error control: if an error occurs, the loop should not stop
         console.log('error = ' + error);
@@ -42,7 +42,7 @@ export class CompanySearchComponent implements OnInit {
 
   onReportSearch(text: string): void {
     if (text) {
-      this.companyReportSearchService.search(text);
+      this.profileService.search(text);
     }
   }
 }
