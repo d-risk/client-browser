@@ -62,9 +62,9 @@ export class FakeData {
         stats: stats(
           [
             {
-              name: 'Stat 1',
+              name: 'Income Statement',
               x: 'Year',
-              y: '$',
+              y: '',
               items: [
                 {name: 'Revenue', scale: 10000000},
                 {name: 'Net Profit', scale: 100000}
