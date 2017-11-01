@@ -1,7 +1,10 @@
 import {AuthenticationService} from '../app/services/authentication.service';
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {CompanyService} from '../app/modules/dashboard/search/company.service';
-import {ProfileService} from '../app/modules/dashboard/search/profile.service';
+import {CompanyProfile, ProfileService} from '../app/modules/dashboard/search/profile.service';
+import {ProfileComponent} from '../app/modules/dashboard/profile/profile.component';
+import {Observable} from 'rxjs/Observable';
+import {SearchComponent} from '../app/modules/dashboard/search/search.component';
 
 export function createMockAuthenticationService(): AuthenticationService {
   return jasmine.createSpyObj<AuthenticationService>('authenticationService', ['login', 'logout', 'isAuthenticated']);

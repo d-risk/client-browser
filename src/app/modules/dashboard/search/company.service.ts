@@ -18,7 +18,7 @@ export class CompanyService {
     return this.http
       .get(`api/companies/?name=${text}`)
       .map(response => {
-        console.log('response = ' + JSON.stringify(response));
+        console.log('received = ' + JSON.stringify(response));
         return response.json() as CompanyName[];
       });
   }

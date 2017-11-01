@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CompanyProfile, ProfileService} from '../search/profile.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-profile',
@@ -8,12 +9,17 @@ import {CompanyProfile, ProfileService} from '../search/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
+  @Input() profile$: Observable<CompanyProfile>;
   profile: CompanyProfile;
 
-  constructor(private profileService: ProfileService) {
+  constructor() {
   }
 
   ngOnInit() {
+    this.profile$
+      .subscribe(p => {
+        this.profile = p;
+      });
   }
 
 }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import {Http} from '@angular/http';
 
 export interface CompanyProfile {
   name: string;
@@ -33,8 +33,11 @@ export class ProfileService {
 
   search(text: string): Observable<CompanyProfile> {
     return this.http
-      .get(`api/profiles/?name=${text}`)
-      .map(response => response.json() as CompanyProfile);
+      .get('api/profiles/', {params: {name: text}})
+      .map((response) => {
+        console.log('received = ' + JSON.stringify(response));
+        return response.json() as CompanyProfile;
+      });
 
   }
 }
