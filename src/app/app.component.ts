@@ -7,7 +7,8 @@ import {Title} from '@angular/platform-browser';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private titleService: Title) {
-    this.titleService.setTitle('D-Risk?');
+
+  constructor(private title: Title) {
+    this.title.setTitle('D-Risk?');
   }
 }
