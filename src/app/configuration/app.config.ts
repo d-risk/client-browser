@@ -9,24 +9,26 @@ export interface Configuration {
 
 @Injectable()
 export class AppConfig {
-  private defaults: Configuration;
-  private config: Configuration;
+  private _defaults_file = './defaults.json';
+  private _config_file = './assets/config.json';
+  private _defaults: Configuration;
+  private _config: Configuration;
 
   constructor(private http: HttpClient) {
   }
 
   get(key: string): any {
-    return this.config && this.config[key] ? this.config[key] : this.defaults[key];
+    return this._config && this._config[key] ? this._config[key] : this._defaults[key];
   }
 
   load() {
-    this.defaults = require('./defaults.json');
+    this._defaults = require(this._defaults_file);
     return new Promise((resolve) => {
         this.http
-          .get<Configuration>('./assets/config.json', {observe: 'body'})
+          .get<Configuration>(this._config_file, {observe: 'body'})
           .subscribe(response => {
-              this.config = response;
-              console.log('Loading file "config.json": ' + JSON.stringify(this.config));
+              this._config = response;
+              console.log('Loading file "config.json": ' + JSON.stringify(this._config));
               resolve(true);
             },
             error => {
