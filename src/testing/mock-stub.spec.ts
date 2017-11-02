@@ -1,21 +1,31 @@
-import {AuthenticationService} from '../app/services/authentication.service';
-import {Component, Input} from '@angular/core';
+import {AuthenticationService} from '../app/authentication/authentication.service';
+import {Component} from '@angular/core';
 import {CompanyService} from '../app/modules/dashboard/search/company.service';
-import {CompanyProfile, ProfileService} from '../app/modules/dashboard/search/profile.service';
-import {ProfileComponent} from '../app/modules/dashboard/profile/profile.component';
-import {Observable} from 'rxjs/Observable';
-import {SearchComponent} from '../app/modules/dashboard/search/search.component';
+import {ProfileService} from '../app/modules/dashboard/search/profile.service';
+import {AppConfig} from '../app/configuration/app.config';
+import {Auth0Factory} from '../app/authentication/auth0.factory';
 
 export function createMockAuthenticationService(): AuthenticationService {
-  return jasmine.createSpyObj<AuthenticationService>('authenticationService', ['login', 'logout', 'isAuthenticated']);
+  return jasmine.createSpyObj<AuthenticationService>(
+    'authenticationService',
+    ['login', 'logout', 'isAuthenticated', 'handleAuthentication', 'user']
+  );
 }
 
 export function createMockCompanyService(): CompanyService {
-  return jasmine.createSpyObj<CompanyService>('companyNameSearchService', ['search']);
+  return jasmine.createSpyObj<CompanyService>('companyService', ['search']);
 }
 
 export function createMockProfileService(): ProfileService {
-  return jasmine.createSpyObj<ProfileService>('companyReportSearchService', ['search']);
+  return jasmine.createSpyObj<ProfileService>('profileService', ['search']);
+}
+
+export function createMockAppConfig(): AppConfig {
+  return jasmine.createSpyObj('config', ['get']);
+}
+
+export function createMockAuth0Factory(): Auth0Factory {
+  return jasmine.createSpyObj('factory', ['auth0']);
 }
 
 export class FakeComponent {

@@ -15,8 +15,8 @@
     </a>
     <span class="toolbar-filler"></span>
     <ng-container [ngSwitch]="isAuthenticated()">
-      <a *ngSwitchCase="true" (click)="logout()" mat-button>Logout</a>
-      <a *ngSwitchDefault routerLink="/login" routerLinkActive="active" mat-button>Login</a>
+      <span *ngSwitchCase="true">{{name()}}<span></span><a (click)="logout()" mat-button>Logout</a></span>
+      <a *ngSwitchDefault (click)="login()" mat-button>Login</a>
     </ng-container>
   </mat-toolbar>
 </header>

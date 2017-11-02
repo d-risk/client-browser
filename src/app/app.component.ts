@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Title} from '@angular/platform-browser';
+import {AuthenticationService} from './authentication/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import {Title} from '@angular/platform-browser';
 })
 export class AppComponent {
 
-  constructor(private title: Title) {
-    this.title.setTitle('D-Risk?');
+  constructor(private title: Title, private authenticationService: AuthenticationService) {
+    this.title.setTitle('D-Risk');
+    authenticationService.handleAuthentication();
   }
 }

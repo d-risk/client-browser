@@ -5,6 +5,6 @@
   "auth0.domain": "czhong.auth0.com",
   "auth0.responseType": "token",
   "auth0.audience": "https://czhong.auth0.com/userinfo",
-  "auth0.redirectUri": "http://localhost:4200/dashboard",
+  "auth0.redirectUri": "http://localhost:4200/login",
   "auth0.scope": "openid profile"
 }

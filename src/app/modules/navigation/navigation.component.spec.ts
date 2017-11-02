@@ -4,9 +4,7 @@ import {MatButtonModule, MatIconModule, MatToolbarModule} from '@angular/materia
 import {RouterTestingModule} from '@angular/router/testing';
 
 import {NavigationComponent} from './navigation.component';
-
-import {AuthenticationService} from '../../services/authentication.service';
-
+import {AuthenticationService} from '../../authentication/authentication.service';
 import {createMockAuthenticationService, FakeComponent} from '../../../testing/mock-stub.spec';
 
 describe('NavigationComponent', () => {
@@ -28,8 +26,6 @@ describe('NavigationComponent', () => {
         RouterTestingModule.withRoutes([
           {path: 'about', component: FakeComponent},
           {path: 'dashboard', component: FakeComponent},
-          {path: 'login', component: FakeComponent},
-          {path: 'logout', component: FakeComponent},
           {path: '', component: FakeComponent},
         ]),
       ],

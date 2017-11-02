@@ -7,7 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {NavigationModule} from './modules/navigation/navigation.module';
 import {FooterModule} from './modules/footer/footer.module';
 import {PageNotFoundModule} from './modules/page-not-found/page-not-found.module';
-import {ConfigurationModule} from './configuration/configuration.module';
+import {AuthenticationModule} from './authentication/authentication.module';
 
 @NgModule({
   imports: [
@@ -17,12 +17,11 @@ import {ConfigurationModule} from './configuration/configuration.module';
     NavigationModule,
     PageNotFoundModule,
 
-    AppRoutingModule,
+    AuthenticationModule,
 
-    ConfigurationModule,
+    AppRoutingModule
   ],
   declarations: [AppComponent],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
