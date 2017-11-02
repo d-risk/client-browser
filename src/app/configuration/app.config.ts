@@ -9,9 +9,8 @@ export interface Configuration {
 
 @Injectable()
 export class AppConfig {
-  private _defaults_file = './defaults.json';
   private _config_file = './assets/config.json';
-  private _defaults: Configuration;
+  private _defaults: Configuration = require('./defaults.json');
   private _config: Configuration;
 
   constructor(private http: HttpClient) {
@@ -22,7 +21,6 @@ export class AppConfig {
   }
 
   load() {
-    this._defaults = require(this._defaults_file);
     return new Promise((resolve) => {
         this.http
           .get<Configuration>(this._config_file, {observe: 'body'})
