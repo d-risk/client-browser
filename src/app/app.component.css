@@ -1,0 +1,17 @@
+div#container {
+  min-height: 100%;
+  position: relative;
+}
+
+div#header {
+}
+
+div#content {
+}
+
+div#footer {
+  position: absolute;
+  height: auto;
+  width: 100%;
+  bottom: 0;
+}
