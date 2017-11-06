@@ -1,5 +1,5 @@
 #!/bin/sh
 
-envsubst < /default.conf.template > /etc/nginx/conf.d/default.conf
-envsubst < /nginx.conf.template > /etc/nginx/nginx.conf
+envsubst '${PORT}' < /default.conf.template > /etc/nginx/conf.d/default.conf
+cp /nginx.conf /etc/nginx/nginx.conf
 nginx
