@@ -1,12 +1,26 @@
 language: node_js
+
 node_js:
   - "8"
+
 cache:
   directories:
     - "node_modules"
+
 addons:
   chrome: stable
+
+services:
+  - docker
+
 before_install:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+
 before_deploy:
   - ng build --prod
+  - |
+    if [[ -v TRAVIS_TAG && -z ${TRAVIS_TAG} ]]; then
+      docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_TAG} -t ${TRAVIS_REPO_SLUG} .
+    else
+      docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_TAG}-SNAPSHOT-${TRAVIS_BUILD_NUMBER} .
+    fi
