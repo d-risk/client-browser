@@ -22,7 +22,7 @@ http {
 
     access_log  /var/log/nginx/access.log  main;
 
-    server_tokens        off
+    server_tokens        off;
     sendfile             on;
     client_body_timeout  65;
     keepalive_timeout    5;
