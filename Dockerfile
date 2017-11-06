@@ -1,7 +1,6 @@
 FROM nginx:alpine
 
-RUN rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/* /etc/nginx/nginx.conf
-COPY ./nginx /
+RUN rm -rf /usr/share/nginx/html/*
 COPY ./dist /usr/share/nginx/html
 
 CMD ["./start-nginx.sh"]
