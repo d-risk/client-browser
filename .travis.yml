@@ -21,8 +21,14 @@ after_success:
   - if [ -z "${TRAVIS_TAG}" ]; then
       echo TRAVIS_BRANCH="${TRAVIS_BRANCH}";
       echo TRAVIS_BUILD_NUMBER="${TRAVIS_BUILD_NUMBER}";
+      export DOCKER_IMAGE_VERSION=${TRAVIS_BRANCH}-SNAPSHOT-${TRAVIS_BUILD_NUMBER}
       docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}-SNAPSHOT-${TRAVIS_BUILD_NUMBER} .;
     else
       echo TRAVIS_TAG="${TRAVIS_TAG}";
-      docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_TAG} -t ${TRAVIS_REPO_SLUG} .;
+      export DOCKER_IMAGE_VERSION=${TRAVIS_TAG}
+      docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_TAG} -t ${TRAVIS_REPO_SLUG}:latest .;
     fi
+  - docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
+  - docker tag ${TRAVIS_REPO_SLUG}:${TRAVIS_TAG} registry.heroku.com/${HEROKU_APP_NAME}/web
+  - docker push registry.heroku.com/${HEROKU_APP_NAME}/web
+
