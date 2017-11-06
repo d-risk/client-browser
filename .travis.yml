@@ -19,7 +19,7 @@ before_install:
 after_success:
   - ng build --prod
   - |
-    if [[ -v TRAVIS_TAG && -z ${TRAVIS_TAG} ]]; then
+    if [[ -v TRAVIS_TAG && -z "${TRAVIS_TAG}" ]]; then
       echo TRAVIS_TAG=${TRAVIS_TAG}
       docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_TAG} -t ${TRAVIS_REPO_SLUG} .
     else
