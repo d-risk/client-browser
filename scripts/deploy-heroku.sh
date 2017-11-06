@@ -7,6 +7,7 @@ echo TRAVIS_BRANCH="'${TRAVIS_BRANCH}'";
 echo TRAVIS_BUILD_NUMBER="'${TRAVIS_BUILD_NUMBER}'";
 echo TRAVIS_TAG="'${TRAVIS_TAG}'";
 ng build --prod
+chmod +x ./nginx/start-nginx.sh
 if [ -z "${TRAVIS_TAG}" ]; then
   DOCKER_IMAGE=${DOCKER_REPO}:${TRAVIS_BRANCH}-SNAPSHOT-${TRAVIS_BUILD_NUMBER}
   docker build -t ${DOCKER_IMAGE} .;
