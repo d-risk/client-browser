@@ -18,12 +18,11 @@ before_install:
 
 after_success:
   - ng build --prod
-  - |
-    if [ -z "${TRAVIS_TAG}" ] then
-      echo TRAVIS_BRANCH="${TRAVIS_BRANCH}"
-      echo TRAVIS_BUILD_NUMBER="${TRAVIS_BUILD_NUMBER}"
-      docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}-SNAPSHOT-${TRAVIS_BUILD_NUMBER} .
+  - if [ -z "${TRAVIS_TAG}" ]; then
+      echo TRAVIS_BRANCH="${TRAVIS_BRANCH}";
+      echo TRAVIS_BUILD_NUMBER="${TRAVIS_BUILD_NUMBER}";
+      docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_BRANCH}-SNAPSHOT-${TRAVIS_BUILD_NUMBER} .;
     else
-      echo TRAVIS_TAG="${TRAVIS_TAG}"
-      docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_TAG} -t ${TRAVIS_REPO_SLUG} .
+      echo TRAVIS_TAG="${TRAVIS_TAG}";
+      docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_TAG} -t ${TRAVIS_REPO_SLUG} .;
     fi
