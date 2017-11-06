@@ -10,6 +10,6 @@ sed -i "s/user\(\s\+\)nginx;//" ${FILE_NGINX}
 echo Contents of ${FILE_DEFAULT}
 cat ${FILE_DEFAULT}
 echo Contents of ${FILE_NGINX}
-cat ${FILE_DEFAULT}
+cat ${FILE_NGINX}
 
 nginx -g "daemon off;"
