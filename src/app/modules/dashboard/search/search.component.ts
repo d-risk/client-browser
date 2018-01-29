@@ -1,4 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit {
       .catch(error => {
         // TODO proper error control: if an error occurs, the loop should not stop
         console.log('error = ' + error);
-        return Observable.of<CompanyName[]>([]);
+        return Observable.of<CompanyProfile>();
       });
   }
 
