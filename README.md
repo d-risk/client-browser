@@ -1,10 +1,15 @@
-# ClientBrowser
+# D-Risk Technology Web Client
 
-[![Build Status](https://travis-ci.org/d-risk/client-browser.svg?branch=master)](https://travis-ci.org/d-risk/client-browser)
+[![Build Status](https://travis-ci.org/d-risk/web-client.svg?branch=master)](https://travis-ci.org/d-risk/web-client)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.7  and was upgraded to version 1.6.6.
 
-## Development server
+## Requirements
+
+* [Node.js](https://nodejs.org/)
+* All other dependencies should be install with `npm install`
+
+## Local development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
@@ -14,7 +19,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build` to build the project for production. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
