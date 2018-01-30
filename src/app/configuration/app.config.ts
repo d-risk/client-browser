@@ -9,8 +9,8 @@ export interface Configuration {
 
 @Injectable()
 export class AppConfig {
+  private _defaults: Configuration = require('../../../config/defaults.json');
   private _config_file = './assets/config.json';
-  private _defaults: Configuration = require('./defaults.json');
   private _config: Configuration;
 
   constructor(private http: HttpClient) {
