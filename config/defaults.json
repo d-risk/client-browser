@@ -5,6 +5,6 @@
   "auth0.domain": "test-d-risk-tech.auth0.com",
   "auth0.responseType": "token",
   "auth0.audience": "https://test-d-risk-tech.auth0.com/userinfo",
-  "auth0.redirectUri": "http://test.d-risk.tech/login",
+  "auth0.redirectUri": "https://test.d-risk.tech/login",
   "auth0.scope": "openid profile"
 }
