@@ -3,11 +3,11 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule, MatTabsModule} from '@angular/material';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
-import {ProfileComponent} from './profile.component';
+import {CreditReportComponent} from './credit-report.component';
 
-describe('ProfileComponent', () => {
-  let component: ProfileComponent;
-  let fixture: ComponentFixture<ProfileComponent>;
+describe('CreditReportComponent', () => {
+  let component: CreditReportComponent;
+  let fixture: ComponentFixture<CreditReportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,13 +19,13 @@ describe('ProfileComponent', () => {
 
         NgxChartsModule,
       ],
-      declarations: [ProfileComponent],
+      declarations: [CreditReportComponent],
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfileComponent);
+    fixture = TestBed.createComponent(CreditReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

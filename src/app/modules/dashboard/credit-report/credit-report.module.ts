@@ -4,8 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule, MatTabsModule} from '@angular/material';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
-import {ProfileComponent} from './profile.component';
-import {ProfileService} from '../search/profile.service';
+import {CreditReportComponent} from './credit-report.component';
 
 @NgModule({
   imports: [
@@ -17,9 +16,8 @@ import {ProfileService} from '../search/profile.service';
 
     NgxChartsModule,
   ],
-  declarations: [ProfileComponent],
-  exports: [ProfileComponent],
-  providers: [ProfileService],
+  declarations: [CreditReportComponent],
+  exports: [CreditReportComponent]
 })
-export class ProfileModule {
+export class CreditReportModule {
 }

@@ -1,13 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CompanyProfile, ProfileService} from '../search/profile.service';
+import {CompanyProfile} from '../../../credit-rating/profile.service';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  templateUrl: './credit-report.component.html',
+  styleUrls: ['./credit-report.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class CreditReportComponent implements OnInit {
 
   @Input() profile$: Observable<CompanyProfile>;
   profile: CompanyProfile;
