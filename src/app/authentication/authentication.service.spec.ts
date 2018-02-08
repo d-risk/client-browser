@@ -1,8 +1,11 @@
 import {inject, TestBed} from '@angular/core/testing';
 
 import {AuthenticationService} from './authentication.service';
-import {createMockAuth0Factory} from '../../testing/mock-stub.spec';
 import {Auth0Factory} from './auth0.factory';
+
+export function createMockAuth0Factory(): Auth0Factory {
+  return jasmine.createSpyObj('factory', ['auth0']);
+}
 
 describe('AuthenticationService', () => {
   let factory: Auth0Factory;

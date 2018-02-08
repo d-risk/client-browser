@@ -2,25 +2,41 @@ import {async, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 
 import {AppComponent} from './app.component';
-import {createMockAuthenticationService, createMockComponent, FakeComponent} from '../testing/mock-stub.spec';
 import {AuthenticationService} from './authentication/authentication.service';
+import {Component} from "@angular/core";
+
+@Component({
+  selector: 'app-navigation',
+  template: '',
+})
+export class MockNavigationComponent  {
+}
+
+@Component({
+  selector: 'app-footer',
+  template: '',
+})
+export class MockFooterComponent  {
+}
 
 describe('AppComponent', () => {
   let mockAuthenticationService: AuthenticationService;
 
   beforeEach(async(() => {
-    mockAuthenticationService = createMockAuthenticationService();
+    mockAuthenticationService = jasmine.createSpyObj<AuthenticationService>(
+      'authenticationService',
+      ['login', 'logout', 'isAuthenticated', 'handleAuthentication', 'user']);
 
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule.withRoutes([
-          {path: '**', component: FakeComponent},
+          {path: '**', component: null},
         ]),
       ],
       declarations: [
         AppComponent,
-        createMockComponent({selector: 'app-navigation'}),
-        createMockComponent({selector: 'app-footer'}),
+        MockNavigationComponent,
+        MockFooterComponent,
       ],
       providers: [
         {provide: AuthenticationService, useValue: mockAuthenticationService}

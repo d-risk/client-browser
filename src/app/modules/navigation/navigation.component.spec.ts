@@ -5,7 +5,11 @@ import {RouterTestingModule} from '@angular/router/testing';
 
 import {NavigationComponent} from './navigation.component';
 import {AuthenticationService} from '../../authentication/authentication.service';
-import {createMockAuthenticationService, FakeComponent} from '../../../testing/mock-stub.spec';
+
+// import {createMockAuthenticationService, FakeComponent} from '../../../testing/mock-stub.spec';
+
+export class FakeComponent {
+}
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -13,7 +17,9 @@ describe('NavigationComponent', () => {
   let mockAuthenticationService;
 
   beforeEach(async(() => {
-    mockAuthenticationService = createMockAuthenticationService();
+    mockAuthenticationService = jasmine.createSpyObj<AuthenticationService>(
+      'authenticationService',
+      ['login', 'logout', 'isAuthenticated', 'handleAuthentication', 'user']);
 
     TestBed.configureTestingModule({
       imports: [
