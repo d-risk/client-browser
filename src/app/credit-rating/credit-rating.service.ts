@@ -9,6 +9,7 @@ import "rxjs/add/observable/of"
 
 import {AppConfig} from "../configuration/app.config";
 import {CompanyInfo} from "./company-info";
+import {CreditReport} from "./credit-report";
 
 @Injectable()
 export class CreditRatingService {
@@ -43,6 +44,11 @@ export class CreditRatingService {
         variables: {text: text}
       })
       .map(value => value.data.companies);
+  }
+
+  rating(text: string): Observable<CreditReport> {
+    this.apollo.query({query: gql`{ rating(id: 1) { id rating companyName } }`}).subscribe(console.log);
+    return Observable.of<CreditReport>();
   }
 
 }
