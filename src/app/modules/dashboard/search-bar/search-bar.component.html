@@ -1,8 +1,8 @@
 <mat-form-field>
-  <input #searchBox type="text" matInput [formControl]="searchForm" [matAutocomplete]="auto"
-         (keyup)="onNameSearch(searchBox.value)" (keydown.enter)="onReportSearch(searchBox.value)"
+  <input #searchBar type="text" matInput [formControl]="searchForm" [matAutocomplete]="auto"
+         (keyup)="onNameSearch(searchBar.value)" (keydown.enter)="onReportSearch(searchBar.value)"
          title="Search for a Company by Name">
-  <button matSuffix mat-button="" (click)="onReportSearch(searchBox.value)">
+  <button matSuffix mat-button="" (click)="onReportSearch(searchBar.value)">
     <mat-icon>search</mat-icon>
   </button>
   <mat-placeholder>Enter a company's name</mat-placeholder>

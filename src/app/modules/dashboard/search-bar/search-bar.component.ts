@@ -8,42 +8,43 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
-import {CompanyName, CompanyService} from './company.service';
-import {CompanyProfile, ProfileService} from './profile.service';
+import {CompanyInfo} from "../../../credit-rating/company-info";
+import {CreditReport} from '../../../credit-rating/credit-report';
+import {CreditRatingService} from "../../../credit-rating/credit-rating.service";
 
 @Component({
   selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  templateUrl: './search-bar.component.html',
+  styleUrls: ['./search-bar.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchBarComponent implements OnInit {
   searchForm: FormControl = new FormControl();
-  companies: Observable<CompanyName[]>;
-  profile: Observable<CompanyProfile>;
+  companies: Observable<CompanyInfo[]>;
+  profile: Observable<CreditReport>;
   private companyText = new Subject<string>();
   private profileText = new Subject<string>();
 
-  constructor(private companyService: CompanyService, private profileService: ProfileService) {
+  constructor(private creditRatingService: CreditRatingService) {
   }
 
   ngOnInit() {
     this.companies = this.companyText
       .debounceTime(300)
       .distinctUntilChanged()
-      .switchMap(text => text ? this.companyService.search(text) : Observable.of<CompanyName[]>([]))
+      .switchMap(text => text ? this.creditRatingService.companies(text) : Observable.of<CompanyInfo[]>([]))
       .catch(error => {
         // TODO proper error control: if an error occurs, the loop should not stop
         console.log('error = ' + error);
-        return Observable.of<CompanyName[]>([]);
+        return Observable.of<CompanyInfo[]>([]);
       });
     this.profile = this.profileText
       .debounceTime(300)
       .distinctUntilChanged()
-      .switchMap(text => text ? this.profileService.search(text) : Observable.of<CompanyProfile>())
+      .switchMap(text => text ? this.creditRatingService.rating(text) : Observable.of<CreditReport>())
       .catch(error => {
         // TODO proper error control: if an error occurs, the loop should not stop
         console.log('error = ' + error);
-        return Observable.of<CompanyProfile>();
+        return Observable.of<CreditReport>();
       });
   }
 
