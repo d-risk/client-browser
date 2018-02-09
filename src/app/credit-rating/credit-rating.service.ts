@@ -3,9 +3,12 @@ import {Observable} from "rxjs/Observable";
 import {HttpLink} from "apollo-angular-link-http";
 import {Apollo} from "apollo-angular";
 import {InMemoryCache} from "apollo-cache-inmemory";
-import gql from "graphql-tag";
+import {DefaultOptions} from "apollo-client/ApolloClient";
+import {ApolloError} from "apollo-client";
+import {catchError, map} from "rxjs/operators";
+import {from} from "rxjs/observable/from";
 
-import "rxjs/add/observable/of"
+import gql from "graphql-tag";
 
 import {AppConfig} from "../configuration/app.config";
 import {CompanyInfo} from "./company-info";
@@ -24,10 +27,10 @@ export class CreditRatingService {
     });
   }
 
-  companies(text: string): Observable<CompanyInfo[]> {
+  companies(name: string): Observable<CompanyInfo[]> {
     const query = gql`
-    query CompaniesByText($text: String!) {
-      companies(text: $text) {
+    query CompaniesByText($name: String!) {
+      companies(text: $name) {
         id
         name
       }
@@ -36,19 +39,55 @@ export class CreditRatingService {
       companies: CompanyInfo[]
     }
     type V = {
-      text: string
+      name: string
     }
     return this.apollo
       .query<T, V>({
         query: query,
-        variables: {text: text}
+        variables: {name: name},
       })
+      .pipe(
+        catchError(this.error),
+      )
       .map(value => value.data.companies);
   }
 
-  rating(text: string): Observable<CreditReport> {
-    this.apollo.query({query: gql`{ rating(id: 1) { id rating companyName } }`}).subscribe(console.log);
-    return Observable.of<CreditReport>();
+  reports(id: string): Observable<CreditReport[]> {
+    const query = gql`
+    query ReportByCompanyId($id: Int!) {
+      ratings(id: $id) {
+        id
+        creditRating
+        creditRatingDate
+        companyName
+      }
+    }`;
+    type T = {
+      ratings: CreditReport[]
+    }
+    type V = {
+      id: number
+    }
+
+    return this.apollo
+      .query<T, V>({
+        query: query,
+        variables: {id: parseInt(id)},
+      })
+      .pipe(
+        catchError(this.error),
+      )
+      .map(value => value.data.ratings);
+  }
+
+  private error(err: ApolloError) {
+    // console.log(err.message)
+    err.graphQLErrors.forEach(value => console.log(value))
+    if (err.networkError) {
+      console.log(err.networkError)
+    }
+    // console.log(err.extraInfo)
+    return from([])
   }
 
 }

@@ -1,14 +1,16 @@
 <mat-form-field>
-  <input #searchBar type="text" matInput [formControl]="searchForm" [matAutocomplete]="auto"
-         (keyup)="onNameSearch(searchBar.value)" (keydown.enter)="onReportSearch(searchBar.value)"
-         title="Search for a Company by Name">
-  <button matSuffix mat-button="" (click)="onReportSearch(searchBar.value)">
-    <mat-icon>search</mat-icon>
-  </button>
-  <mat-placeholder>Enter a company's name</mat-placeholder>
+  <mat-label>Enter a company's name</mat-label>
+  <input #searchBar type="text" placeholder="Company's Name" matInput [formControl]="formControl" [matAutocomplete]="autoComplete"
+         (keyup)="searchCompaniesByName(searchBar.value)" title="Search for a Company by Name">
+  <mat-autocomplete #autoComplete [displayWith]="displayWidth">
+    <ng-container [ngSwitch]="(companies | async)?.length">
+      <mat-option *ngSwitchCase="0" class="empty">No Company Found!</mat-option>
+      <ng-container *ngSwitchDefault>
+        <mat-option *ngFor="let company of companies | async" [value]="company"
+                    (onSelectionChange)="onSelectionChange(company)">
+          {{company.name}}
+        </mat-option>
+      </ng-container>
+    </ng-container>
+  </mat-autocomplete>
 </mat-form-field>
-<mat-autocomplete #auto="matAutocomplete">
-  <mat-option *ngFor="let company of companies | async" [value]="company.name">
-    {{company.name}}
-  </mat-option>
-</mat-autocomplete>

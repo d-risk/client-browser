@@ -1,12 +1,12 @@
-<div *ngIf="profile">
+<div *ngIf="creditReport">
   <mat-card>
-    <h1>{{profile.name}}</h1>
+    <h1>{{creditReport[0].companyName}}</h1>
     <span></span>
-    <h2>Score: {{profile.rating}}</h2>
+    <h2>Credit Rating: {{creditReport[0].creditRating}} at {{creditReport[0].creditRatingDate}}</h2>
   </mat-card>
   <mat-card>
     <mat-tab-group>
-      <mat-tab *ngFor="let stat of profile.stats" [label]="stat.name">
+      <mat-tab *ngFor="let stat of creditReport[0].stats" [label]="stat.name">
         <ngx-charts-line-chart
           [view]="[700, 400]"
           [scheme]="{domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']}"

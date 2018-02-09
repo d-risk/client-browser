@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card>
-    <app-search #search></app-search>
+    <app-search #searchBar></app-search>
   </mat-card>
-  <app-profile [profile$]="search.profile"></app-profile>
+  <app-profile [creditReport$]="searchBar.creditReport"></app-profile>
 </mat-card>
 

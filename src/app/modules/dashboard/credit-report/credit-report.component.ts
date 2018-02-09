@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CompanyProfile} from '../../../credit-rating/profile.service';
 import {Observable} from 'rxjs/Observable';
+
+import {CreditReport} from "../../../credit-rating/credit-report";
 
 @Component({
   selector: 'app-profile',
@@ -9,17 +10,15 @@ import {Observable} from 'rxjs/Observable';
 })
 export class CreditReportComponent implements OnInit {
 
-  @Input() profile$: Observable<CompanyProfile>;
-  profile: CompanyProfile;
+  @Input() creditReport$: Observable<CreditReport[]>;
+  creditReport: CreditReport[];
 
   constructor() {
   }
 
   ngOnInit() {
-    this.profile$
-      .subscribe(p => {
-        this.profile = p;
-      });
+    this.creditReport$
+      .subscribe(value => this.creditReport = value);
   }
 
 }
