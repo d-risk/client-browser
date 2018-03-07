@@ -4,21 +4,22 @@ import {Observable} from 'rxjs/Observable';
 import {CreditReport} from "../../../credit-rating/credit-report";
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-credit-report',
   templateUrl: './credit-report.component.html',
   styleUrls: ['./credit-report.component.css']
 })
 export class CreditReportComponent implements OnInit {
 
-  @Input() creditReport$: Observable<CreditReport[]>;
-  creditReport: CreditReport[];
-
-  constructor() {
-  }
+  @Input() creditReports$: Observable<CreditReport[]>;
+  creditReports: CreditReport[];
 
   ngOnInit() {
-    this.creditReport$
-      .subscribe(value => this.creditReport = value);
+    this.creditReports$
+      .subscribe(value => this.creditReports = value);
+  }
+
+  formatDate(s: string): string {
+    return new Date(s).toDateString()
   }
 
 }

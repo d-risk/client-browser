@@ -7,7 +7,7 @@
       <mat-option *ngSwitchCase="0" class="empty">No Company Found!</mat-option>
       <ng-container *ngSwitchDefault>
         <mat-option *ngFor="let company of companies | async" [value]="company"
-                    (onSelectionChange)="onSelectionChange(company)">
+                    (onSelectionChange)="searchCreditReportsByCompanyId(company)">
           {{company.name}}
         </mat-option>
       </ng-container>

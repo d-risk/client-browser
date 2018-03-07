@@ -10,33 +10,33 @@ import {CreditReport} from '../../../credit-rating/credit-report';
 import {CreditRatingService} from "../../../credit-rating/credit-rating.service";
 
 @Component({
-  selector: 'app-search',
+  selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
   formControl = new FormControl();
   companies: Observable<CompanyInfo[]>;
-  creditReport: Observable<CreditReport[]>;
-  private _searchCompaniesText = new Subject<string>();
-  private _searchCreditReportText = new Subject<CompanyInfo>();
+  creditReports: Observable<CreditReport[]>;
+  private _searchCompaniesByName = new Subject<string>();
+  private _searchCreditReportsByCompanyId = new Subject<CompanyInfo>();
   private _debounceTime = 300;
 
   constructor(private creditRatingService: CreditRatingService) {
   }
 
   ngOnInit() {
-    this.companies = this._searchCompaniesText
+    this.companies = this._searchCompaniesByName
       .pipe(
         debounceTime(this._debounceTime),
         distinctUntilChanged(),
         switchMap((value: string) => value ? this.creditRatingService.companies(value) : from<CompanyInfo[]>([])),
       );
-    this.creditReport = this._searchCreditReportText
+    this.creditReports = this._searchCreditReportsByCompanyId
       .pipe(
         debounceTime(this._debounceTime),
         distinctUntilChanged(),
-        switchMap((value: CompanyInfo) => value ? this.creditRatingService.reports(value.id.toString()) : from<CreditReport[]>([])),
+        switchMap((value: CompanyInfo) => value ? this.creditRatingService.reports(value.id) : from<CreditReport[]>([])),
       );
   }
 
@@ -44,12 +44,13 @@ export class SearchBarComponent implements OnInit {
     return company ? company.name : undefined;
   }
 
-  onSelectionChange(company: CompanyInfo): void {
-    this._searchCreditReportText.next(company);
-  }
 
   searchCompaniesByName(name: string): void {
-    this._searchCompaniesText.next(name);
+    this._searchCompaniesByName.next(name);
+  }
+
+  searchCreditReportsByCompanyId(company: CompanyInfo): void {
+    this._searchCreditReportsByCompanyId.next(company);
   }
 
 }

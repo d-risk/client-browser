@@ -1,4 +1,4 @@
 export interface CompanyInfo {
-  id: number
+  id: string
   name: string
 }

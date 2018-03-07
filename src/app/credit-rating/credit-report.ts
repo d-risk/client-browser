@@ -1,9 +1,22 @@
 export interface CreditReport {
-  id: number
-  creditRating: string
-  creditRatingDate: string
-  companyName: string
-  stats: Stat[]
+  companyId: string
+  creditRating: CreditRating
+  riskDrivers: RiskDriver[]
+}
+
+export interface CreditRating {
+  score: number
+  text: string
+  date: Date
+}
+
+export interface RiskDriver {
+  name: string
+  unit: string
+  latest: number
+  maximum: number
+  minimum: number
+  average: number
 }
 
 export interface Stat {

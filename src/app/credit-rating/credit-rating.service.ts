@@ -27,10 +27,10 @@ export class CreditRatingService {
     });
   }
 
-  companies(name: string): Observable<CompanyInfo[]> {
+  companies(companyName: string): Observable<CompanyInfo[]> {
     const query = gql`
-    query CompaniesByText($name: String!) {
-      companies(text: $name) {
+    query CompaniesByText($companyName: String!) {
+      companies(companyName: $companyName) {
         id
         name
       }
@@ -39,12 +39,12 @@ export class CreditRatingService {
       companies: CompanyInfo[]
     }
     type V = {
-      name: string
+      companyName: string
     }
     return this.apollo
       .query<T, V>({
         query: query,
-        variables: {name: name},
+        variables: {companyName: companyName},
       })
       .pipe(
         catchError(this.error),
@@ -52,32 +52,48 @@ export class CreditRatingService {
       .map(value => value.data.companies);
   }
 
-  reports(id: string): Observable<CreditReport[]> {
+  reports(companyId: string): Observable<CreditReport[]> {
     const query = gql`
-    query ReportByCompanyId($id: Int!) {
-      ratings(id: $id) {
+    query CreditReportsByCompanyId($companyId: UUID!) {
+      company(id: $companyId) {
         id
-        creditRating
-        creditRatingDate
-        companyName
+        name
+        industry
+        description
+      }
+      reports(companyId: $companyId) {
+        companyId
+        creditRating {
+          score
+          text
+          date
+        }
+        riskDrivers {
+          name
+          latest
+          maximum
+          minimum
+          average
+        }
       }
     }`;
     type T = {
-      ratings: CreditReport[]
+      company: CompanyInfo
+      reports: CreditReport[]
     }
     type V = {
-      id: number
+      companyId: string
     }
 
     return this.apollo
       .query<T, V>({
         query: query,
-        variables: {id: parseInt(id)},
+        variables: {companyId: companyId},
       })
       .pipe(
         catchError(this.error),
       )
-      .map(value => value.data.ratings);
+      .map(value => value.data.reports);
   }
 
   private error(err: ApolloError) {

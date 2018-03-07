@@ -1,10 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCardModule, MatTabsModule} from '@angular/material';
+import {MatCardModule, MatDividerModule, MatTabsModule} from '@angular/material';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import {CreditReportComponent} from './credit-report.component';
+import {RiskDriverModule} from "./risk-driver/risk-driver.module";
 
 @NgModule({
   imports: [
@@ -12,9 +13,12 @@ import {CreditReportComponent} from './credit-report.component';
     BrowserAnimationsModule,
 
     MatCardModule,
+    MatDividerModule,
     MatTabsModule,
 
     NgxChartsModule,
+
+    RiskDriverModule,
   ],
   declarations: [CreditReportComponent],
   exports: [CreditReportComponent]
