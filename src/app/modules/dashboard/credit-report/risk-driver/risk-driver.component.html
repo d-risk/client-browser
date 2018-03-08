@@ -1,31 +1,31 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Risk Drivers</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-table #table [dataSource]="riskDrivers">
-      <ng-container matColumnDef="ratio">
-        <mat-header-cell *matHeaderCellDef>Ratio</mat-header-cell>
-        <mat-cell *matCellDef="let riskDriver">{{riskDriver.name}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="latest">
-        <mat-header-cell *matHeaderCellDef>Latest</mat-header-cell>
-        <mat-cell *matCellDef="let riskDriver">{{riskDriver.latest.toLocaleString()}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="maximum">
-        <mat-header-cell *matHeaderCellDef>Maximum</mat-header-cell>
-        <mat-cell *matCellDef="let riskDriver">{{riskDriver.maximum.toLocaleString()}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="minimum">
-        <mat-header-cell *matHeaderCellDef>Minimum</mat-header-cell>
-        <mat-cell *matCellDef="let riskDriver">{{riskDriver.minimum.toLocaleString()}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="average">
-        <mat-header-cell *matHeaderCellDef>Average</mat-header-cell>
-        <mat-cell *matCellDef="let riskDriver">{{riskDriver.average.toLocaleString()}}</mat-cell>
-      </ng-container>
-      <mat-header-row *matHeaderRowDef="displayOrder"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayOrder;"></mat-row>
-    </mat-table>
-  </mat-card-content>
-</mat-card>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>Risk Drivers</mat-panel-title>
+    <mat-panel-description></mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-table #table [dataSource]="riskDrivers">
+    <ng-container matColumnDef="ratio">
+      <mat-header-cell *matHeaderCellDef>Ratio</mat-header-cell>
+      <mat-cell *matCellDef="let riskDriver">{{riskDriver.name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="latest">
+      <mat-header-cell *matHeaderCellDef>Latest</mat-header-cell>
+      <mat-cell *matCellDef="let riskDriver">{{riskDriver.latest.toLocaleString()}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="maximum">
+      <mat-header-cell *matHeaderCellDef>Maximum</mat-header-cell>
+      <mat-cell *matCellDef="let riskDriver">{{riskDriver.maximum.toLocaleString()}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="minimum">
+      <mat-header-cell *matHeaderCellDef>Minimum</mat-header-cell>
+      <mat-cell *matCellDef="let riskDriver">{{riskDriver.minimum.toLocaleString()}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="average">
+      <mat-header-cell *matHeaderCellDef>Average</mat-header-cell>
+      <mat-cell *matCellDef="let riskDriver">{{riskDriver.average.toLocaleString()}}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayOrder"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayOrder;"></mat-row>
+  </mat-table>
+  <mat-action-row></mat-action-row>
+</mat-expansion-panel>

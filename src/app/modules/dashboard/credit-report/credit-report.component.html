@@ -1,19 +1,20 @@
 <div *ngIf="creditReports">
   <mat-card>
+    <mat-card-header>
+      <mat-card-title>Company Name</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
     <mat-card-content>
-      <mat-card *ngFor="let creditReport of creditReports">
-        <mat-card-header>
+      <mat-expansion-panel *ngFor="let creditReport of creditReports">
+        <mat-expansion-panel-header>
           <!--<mat-card-title>{{creditReport.companyId}}</mat-card-title>-->
-          <mat-card-subtitle>
+          <mat-panel-title>
             Credit Score: {{creditReport.creditRating.score}}, Rating: {{creditReport.creditRating.text}}<br/>
             as of {{formatDate(creditReport.creditRating.date)}}
-          </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <app-risk-driver [riskDrivers]="creditReport.riskDrivers"></app-risk-driver>
-          <app-financial [financials]="creditReport.financials"></app-financial>
-        </mat-card-content>
-      </mat-card>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-risk-driver [riskDrivers]="creditReport.riskDrivers"></app-risk-driver>
+      </mat-expansion-panel>
     </mat-card-content>
   </mat-card>
   <!--
