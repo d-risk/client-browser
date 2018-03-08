@@ -1,36 +1,41 @@
 <div *ngIf="creditReports">
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{creditReports[0].companyId}}</mat-card-title>
-      <mat-card-subtitle>
-        Credit Rating: {{creditReports[0].creditRating.text}}<br/>
-        Dated: {{formatDate(creditReports[0].creditRating.date)}}
-      </mat-card-subtitle>
-    </mat-card-header>
     <mat-card-content>
-      <app-risk-driver [riskDrivers]="creditReports[0].riskDrivers"></app-risk-driver>
+      <mat-card *ngFor="let creditReport of creditReports">
+        <mat-card-header>
+          <!--<mat-card-title>{{creditReport.companyId}}</mat-card-title>-->
+          <mat-card-subtitle>
+            Credit Score: {{creditReport.creditRating.score}}, Rating: {{creditReport.creditRating.text}}<br/>
+            as of {{formatDate(creditReport.creditRating.date)}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <app-risk-driver [riskDrivers]="creditReport.riskDrivers"></app-risk-driver>
+          <app-financial [financials]="creditReport.financials"></app-financial>
+        </mat-card-content>
+      </mat-card>
     </mat-card-content>
   </mat-card>
-<!--
-  <mat-card>
-    <mat-tab-group>
-      <mat-tab *ngFor="let stat of creditReports[0].stats" [label]="stat.name">
-        <ngx-charts-line-chart
-          [view]="[700, 400]"
-          [scheme]="{domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']}"
-          [results]="stat.data"
-          gradient="true"
-          xAxis="true"
-          yAxis="true"
-          legend="false"
-          showXAxisLabel="true"
-          showYAxisLabel="true"
-          [xAxisLabel]="stat.xAxisLabel"
-          [yAxisLabel]="stat.yAxisLabel"
-          autoScale="true">
-        </ngx-charts-line-chart>
-      </mat-tab>
-    </mat-tab-group>
-  </mat-card>
--->
+  <!--
+    <mat-card>
+      <mat-tab-group>
+        <mat-tab *ngFor="let stat of creditReports[0].stats" [label]="stat.name">
+          <ngx-charts-line-chart
+            [view]="[700, 400]"
+            [scheme]="{domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']}"
+            [results]="stat.data"
+            gradient="true"
+            xAxis="true"
+            yAxis="true"
+            legend="false"
+            showXAxisLabel="true"
+            showYAxisLabel="true"
+            [xAxisLabel]="stat.xAxisLabel"
+            [yAxisLabel]="stat.yAxisLabel"
+            autoScale="true">
+          </ngx-charts-line-chart>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  -->
 </div>
