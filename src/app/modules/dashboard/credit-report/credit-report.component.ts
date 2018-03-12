@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-import {CreditReport} from "../../../credit-rating/credit-report";
+import {CreditReport} from "../../../credit-report/credit-report";
 
 @Component({
   selector: 'app-credit-report',

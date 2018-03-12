@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 
-import {RiskDriver} from "../../../../credit-rating/credit-report";
+import {RiskDriver} from "../../../../credit-report/credit-report";
 
 @Component({
   selector: 'app-risk-driver',

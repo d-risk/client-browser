@@ -5,9 +5,9 @@ import {Subject} from 'rxjs/Subject';
 import {from} from "rxjs/observable/from";
 import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
 
-import {CompanyInfo} from "../../../credit-rating/company-info";
-import {CreditReport} from '../../../credit-rating/credit-report';
-import {CreditReportService} from "../../../credit-rating/credit-report.service";
+import {CompanyInfo} from "../../../credit-report/company-info";
+import {CreditReport} from '../../../credit-report/credit-report';
+import {CreditReportService} from "../../../credit-report/credit-report.service";
 
 @Component({
   selector: 'app-search-bar',
