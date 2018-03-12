@@ -7,7 +7,7 @@ import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
 
 import {CompanyInfo} from "../../../credit-rating/company-info";
 import {CreditReport} from '../../../credit-rating/credit-report';
-import {CreditRatingService} from "../../../credit-rating/credit-rating.service";
+import {CreditReportService} from "../../../credit-rating/credit-rating.service";
 
 @Component({
   selector: 'app-search-bar',
@@ -22,7 +22,7 @@ export class SearchBarComponent implements OnInit {
   private _searchCreditReportsByCompanyId = new Subject<CompanyInfo>();
   private _debounceTime = 300;
 
-  constructor(private creditRatingService: CreditRatingService) {
+  constructor(private creditRatingService: CreditReportService) {
   }
 
   ngOnInit() {

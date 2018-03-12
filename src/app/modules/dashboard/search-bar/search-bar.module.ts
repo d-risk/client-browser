@@ -12,7 +12,7 @@ import {
 } from '@angular/material';
 
 import {SearchBarComponent} from './search-bar.component';
-import {CreditRatingModule} from "../../../credit-rating/credit-rating.module";
+import {CreditReportModule} from "../../../credit-rating/credit-rating.module";
 
 @NgModule({
   imports: [
@@ -27,7 +27,7 @@ import {CreditRatingModule} from "../../../credit-rating/credit-rating.module";
     MatIconModule,
     MatInputModule,
 
-    CreditRatingModule,
+    CreditReportModule,
   ],
   declarations: [SearchBarComponent],
   exports: [SearchBarComponent],

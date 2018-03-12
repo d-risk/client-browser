@@ -6,5 +6,5 @@
   "auth0.audience": "https://test-d-risk-tech.auth0.com/userinfo",
   "auth0.redirectUri": "https://test.d-risk.tech/login",
   "auth0.scope": "openid profile",
-  "api.credit_rating_service.uri": "http://api.test.d-risk.tech/graphql/"
+  "api.credit_report_service.uri": "http://localhost:8000/graphql/"
 }

@@ -1,13 +1,21 @@
 export interface CreditReport {
   companyId: string
-  creditRating: CreditRating
+  creditReportScore: number
+  creditReportRating: string
+  creditReportDate: Date
+  financialReports: FinancialReport[]
+}
+
+export interface FinancialReport {
+  financialReportDate: Date
+  financials: Financial[]
   riskDrivers: RiskDriver[]
 }
 
-export interface CreditRating {
-  score: number
-  text: string
-  date: Date
+export interface Financial {
+  name: string
+  unit: string
+  value: number
 }
 
 export interface RiskDriver {
@@ -17,21 +25,7 @@ export interface RiskDriver {
   maximum: number
   minimum: number
   average: number
+  industryAverage: number
 }
 
-export interface Stat {
-  name: string;
-  xAxisLabel: string;
-  yAxisLabel: string;
-  data: Data[];
-}
 
-export interface Data {
-  name: string;
-  series: Series[];
-}
-
-export interface Series {
-  name: string;
-  value: number;
-}

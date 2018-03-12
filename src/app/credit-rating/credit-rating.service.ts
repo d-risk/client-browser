@@ -15,11 +15,11 @@ import {CompanyInfo} from "./company-info";
 import {CreditReport} from "./credit-report";
 
 @Injectable()
-export class CreditRatingService {
+export class CreditReportService {
 
   constructor(private config: AppConfig, private apollo: Apollo, private httpLink: HttpLink) {
     const link = httpLink.create({
-      uri: config.get("api.credit_rating_service.uri"),
+      uri: config.get("api.credit_report_service.uri"),
     });
     apollo.create({
       link: link,
@@ -61,19 +61,25 @@ export class CreditRatingService {
         industry
         description
       }
-      reports(companyId: $companyId) {
+      creditReports(companyId: $companyId) {
         companyId
-        creditRating {
-          score
-          text
-          date
-        }
-        riskDrivers {
-          name
-          latest
-          maximum
-          minimum
-          average
+        creditReportScore
+        creditReportRating
+        creditReportDate
+        financialReports {
+          financialReportDate
+          financials {
+            name
+            value
+          }
+          riskDrivers {
+            name
+            latest
+            maximum
+            minimum
+            average
+            industryAverage
+          }
         }
       }
     }`;
@@ -98,9 +104,9 @@ export class CreditRatingService {
 
   private error(err: ApolloError) {
     // console.log(err.message)
-    err.graphQLErrors.forEach(value => console.log(value))
+    err.graphQLErrors.forEach(value => console.log(value));
     if (err.networkError) {
-      console.log(err.networkError)
+      console.log(err.networkError);
     }
     // console.log(err.extraInfo)
     return from([])

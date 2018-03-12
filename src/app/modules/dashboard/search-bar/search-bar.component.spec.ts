@@ -10,16 +10,16 @@ import {
 } from '@angular/material';
 
 import {SearchBarComponent} from './search-bar.component';
-import {CreditRatingService} from "../../../credit-rating/credit-rating.service";
-import {CreditRatingModule} from "../../../credit-rating/credit-rating.module";
+import {CreditReportService} from "../../../credit-rating/credit-rating.service";
+import {CreditReportModule} from "../../../credit-rating/credit-rating.module";
 
 describe('SearchBarComponent', () => {
   let component: SearchBarComponent;
   let fixture: ComponentFixture<SearchBarComponent>;
-  let mockCreditRatingService: CreditRatingService;
+  let mockCreditRatingService: CreditReportService;
 
   beforeEach(async(() => {
-    mockCreditRatingService = jasmine.createSpyObj<CreditRatingService>('creditRatingService', ['companies', 'rating']);
+    mockCreditRatingService = jasmine.createSpyObj<CreditReportService>('creditRatingService', ['companies', 'rating']);
 
     TestBed.configureTestingModule({
       imports: [
@@ -32,10 +32,10 @@ describe('SearchBarComponent', () => {
         MatIconModule,
         MatInputModule,
 
-        CreditRatingModule,
+        CreditReportModule,
       ],
       declarations: [SearchBarComponent],
-      providers: [{provide: CreditRatingService, useValue: mockCreditRatingService}],
+      providers: [{provide: CreditReportService, useValue: mockCreditRatingService}],
     })
       .compileComponents();
   }));
