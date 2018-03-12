@@ -10,8 +10,8 @@ import {
 } from '@angular/material';
 
 import {SearchBarComponent} from './search-bar.component';
-import {CreditReportService} from "../../../credit-rating/credit-rating.service";
-import {CreditReportModule} from "../../../credit-rating/credit-rating.module";
+import {CreditReportService} from "../../../credit-rating/credit-report.service";
+import {CreditReportModule} from "../../../credit-rating/credit-report.module";
 
 describe('SearchBarComponent', () => {
   let component: SearchBarComponent;

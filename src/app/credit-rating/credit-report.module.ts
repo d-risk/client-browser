@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {ApolloModule} from "apollo-angular";
 import {HttpLinkModule} from "apollo-angular-link-http";
 
-import {CreditReportService} from "./credit-rating.service";
+import {CreditReportService} from "./credit-report.service";
 
 @NgModule({
   imports: [

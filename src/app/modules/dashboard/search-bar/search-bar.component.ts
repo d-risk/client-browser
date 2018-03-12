@@ -7,7 +7,7 @@ import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
 
 import {CompanyInfo} from "../../../credit-rating/company-info";
 import {CreditReport} from '../../../credit-rating/credit-report';
-import {CreditReportService} from "../../../credit-rating/credit-rating.service";
+import {CreditReportService} from "../../../credit-rating/credit-report.service";
 
 @Component({
   selector: 'app-search-bar',
