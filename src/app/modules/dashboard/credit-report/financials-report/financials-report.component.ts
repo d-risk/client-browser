@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+
 import {FinancialsReport} from "../../../../credit-report/credit-report";
 import {FinancialsData} from "./financials/financials.component";
 import {RiskDriverData} from "./risk-driver/risk-driver.component";
@@ -28,15 +29,15 @@ export class FinancialsReportComponent implements OnInit {
         dates.add(report.financialsReportDate);
         report.financialsNumbers.forEach(financials => {
           financialsNames.add(financials.name);
-          let datesMap = this.getOrSet(financialsMap, financials.name, Map);
+          let datesMap = FinancialsReportComponent.getOrSet(financialsMap, financials.name, Map);
           datesMap.set(report.financialsReportDate, financials.value);
         });
         report.riskDrivers.forEach(riskDriver => {
           riskDriverCategories.add(riskDriver.category);
-          let namesMap = this.getOrSet(riskDriversMap, riskDriver.category, Map);
+          let namesMap = FinancialsReportComponent.getOrSet(riskDriversMap, riskDriver.category, Map);
           riskDriver.numbers.forEach(value => {
             riskDriverNames.add(value.name);
-            let numbersMap = this.getOrSet(namesMap, value.name, Map);
+            let numbersMap = FinancialsReportComponent.getOrSet(namesMap, value.name, Map);
             numbersMap.set(report.financialsReportDate, value.value);
           })
         });
@@ -56,7 +57,7 @@ export class FinancialsReportComponent implements OnInit {
   }
 
 
-  private getOrSet<K, V>(map: Map<K, V>, key: K, DefaultValue: { new(): V }): V {
+  private static getOrSet<K, V>(map: Map<K, V>, key: K, DefaultValue: { new(): V }): V {
     let value = map.get(key);
     if (!value) {
       value = new DefaultValue();
