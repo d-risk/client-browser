@@ -1,34 +1,47 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-export interface FinancialsData {
-  dates: Date[]
-  names: string[]
-  numbers: Map<string, Map<Date, number>>
-}
+import {FinancialsReport} from "../../../../../credit-report/credit-report";
 
 @Component({
   selector: 'app-financials',
   templateUrl: './financials.component.html',
   styleUrls: ['./financials.component.css']
 })
-export class FinancialsComponent {
+export class FinancialsComponent implements OnInit {
 
-  @Input() data: FinancialsData;
+  @Input() financialsReports: FinancialsReport[];
 
-  dates(): Date[] {
-    return this.data.dates
-  }
+  columnsOrder: string[] = ['name'];
+  dates: Date[];
+  dataSource: MatTableData[] = [];
 
-  names(): string[] {
-    return this.data.names
-  }
+  ngOnInit() {
+    let dates = new Set<Date>();
 
-  number(name: string, date: Date): number {
-    return this.data.numbers.get(name).get(date)
+    this.financialsReports.forEach(report => {
+        dates.add(report.financialsReportDate);
+        report.financialsNumbers.forEach(financials => {
+          let data = this.dataSource.find(value => value.name.localeCompare(financials.name) === 0);
+          if (!data) {
+            data = {name: financials.name, years: new Map()};
+            this.dataSource.push(data);
+          }
+          data.years.set(report.financialsReportDate, financials.value);
+        });
+      }
+    );
+
+    this.dates = Array.from(dates.keys()).sort();
+    this.dates.forEach(value => this.columnsOrder.push(String(value)));
   }
 
   formatDate(date: Date) {
     return new Date(date).toLocaleDateString()
   }
 
+}
+
+interface MatTableData {
+  name: string
+  years: Map<Date, number>
 }

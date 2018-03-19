@@ -1,13 +1,19 @@
 <mat-expansion-panel>
   <mat-expansion-panel-header>Financials</mat-expansion-panel-header>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th *ngFor="let date of dates()">{{formatDate(date)}}</th>
-    </tr>
-    <tr *ngFor="let name of names()">
-      <td>{{name}}</td>
-      <td *ngFor="let date of dates()">{{number(name, date)}}</td>
-    </tr>
-  </table>
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let e">{{e.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container *ngFor="let date of dates">
+      <ng-container matColumnDef="{{date}}">
+        <mat-header-cell *matHeaderCellDef>{{formatDate(date)}}</mat-header-cell>
+        <mat-cell *matCellDef="let e">{{e.years.get(date)}}</mat-cell>
+      </ng-container>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsOrder"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsOrder;"></mat-row>
+  </mat-table>
 </mat-expansion-panel>
