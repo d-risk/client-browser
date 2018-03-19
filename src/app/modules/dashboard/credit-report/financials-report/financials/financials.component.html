@@ -1,0 +1,13 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>Financials</mat-expansion-panel-header>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th *ngFor="let date of dates()">{{formatDate(date)}}</th>
+    </tr>
+    <tr *ngFor="let name of names()">
+      <td>{{name}}</td>
+      <td *ngFor="let date of dates()">{{number(name, date)}}</td>
+    </tr>
+  </table>
+</mat-expansion-panel>

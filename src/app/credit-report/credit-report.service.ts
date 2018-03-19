@@ -3,16 +3,15 @@ import {Observable} from "rxjs/Observable";
 import {HttpLink} from "apollo-angular-link-http";
 import {Apollo} from "apollo-angular";
 import {InMemoryCache} from "apollo-cache-inmemory";
-import {DefaultOptions} from "apollo-client/ApolloClient";
 import {ApolloError} from "apollo-client";
-import {catchError, map} from "rxjs/operators";
+import {catchError} from "rxjs/operators";
 import {from} from "rxjs/observable/from";
 
 import gql from "graphql-tag";
 
 import {AppConfig} from "../configuration/app.config";
 import {CompanyInfo} from "./company-info";
-import {CreditReport} from "./credit-report";
+import {CompleteReport, CreditReport} from "./credit-report";
 
 @Injectable()
 export class CreditReportService {
@@ -52,7 +51,7 @@ export class CreditReportService {
       .map(value => value.data.companies);
   }
 
-  reports(companyId: string): Observable<CreditReport[]> {
+  reports(companyId: string): Observable<CompleteReport> {
     const query = gql`
     query CreditReportsByCompanyId($companyId: UUID!) {
       company(id: $companyId) {
@@ -66,26 +65,25 @@ export class CreditReportService {
         creditReportScore
         creditReportRating
         creditReportDate
-        financialReports {
-          financialReportDate
-          financials {
+        financialsReports {
+          financialsReportDate
+          financialsNumbers {
             name
             value
           }
           riskDrivers {
-            name
-            latest
-            maximum
-            minimum
-            average
-            industryAverage
+            category
+            numbers {
+              name
+              value
+            }
           }
         }
       }
     }`;
     type T = {
       company: CompanyInfo
-      reports: CreditReport[]
+      creditReports: CreditReport[]
     }
     type V = {
       companyId: string
@@ -99,7 +97,9 @@ export class CreditReportService {
       .pipe(
         catchError(this.error),
       )
-      .map(value => value.data.reports);
+      .map(value => {
+        return {company: value.data.company, creditReports: value.data.creditReports};
+      });
   }
 
   private error(err: ApolloError) {

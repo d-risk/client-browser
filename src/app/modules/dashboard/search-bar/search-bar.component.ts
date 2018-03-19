@@ -3,10 +3,11 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {from} from "rxjs/observable/from";
+import {empty} from "rxjs/observable/empty";
 import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
 
 import {CompanyInfo} from "../../../credit-report/company-info";
-import {CreditReport} from '../../../credit-report/credit-report';
+import {CompleteReport} from '../../../credit-report/credit-report';
 import {CreditReportService} from "../../../credit-report/credit-report.service";
 
 @Component({
@@ -17,12 +18,12 @@ import {CreditReportService} from "../../../credit-report/credit-report.service"
 export class SearchBarComponent implements OnInit {
   formControl = new FormControl();
   companies: Observable<CompanyInfo[]>;
-  creditReports: Observable<CreditReport[]>;
+  completeReport$: Observable<CompleteReport>;
   private _searchCompaniesByName = new Subject<string>();
   private _searchCreditReportsByCompanyId = new Subject<CompanyInfo>();
   private _debounceTime = 300;
 
-  constructor(private creditRatingService: CreditReportService) {
+  constructor(private creditReportService: CreditReportService) {
   }
 
   ngOnInit() {
@@ -30,13 +31,13 @@ export class SearchBarComponent implements OnInit {
       .pipe(
         debounceTime(this._debounceTime),
         distinctUntilChanged(),
-        switchMap((value: string) => value ? this.creditRatingService.companies(value) : from<CompanyInfo[]>([])),
+        switchMap((value: string) => value ? this.creditReportService.companies(value) : from<CompanyInfo[]>([])),
       );
-    this.creditReports = this._searchCreditReportsByCompanyId
+    this.completeReport$ = this._searchCreditReportsByCompanyId
       .pipe(
         debounceTime(this._debounceTime),
         distinctUntilChanged(),
-        switchMap((value: CompanyInfo) => value ? this.creditRatingService.reports(value.id) : from<CreditReport[]>([])),
+        switchMap((value: CompanyInfo) => value ? this.creditReportService.reports(value.id) : empty<CompleteReport>()),
       );
   }
 

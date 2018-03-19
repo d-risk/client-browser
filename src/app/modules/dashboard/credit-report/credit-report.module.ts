@@ -1,24 +1,19 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCardModule, MatExpansionModule, MatTabsModule} from '@angular/material';
-import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {MatExpansionModule} from '@angular/material';
 
 import {CreditReportComponent} from './credit-report.component';
-import {RiskDriverModule} from "./risk-driver/risk-driver.module";
+import {FinancialsReportModule} from "./financials-report/financials-report.module";
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserAnimationsModule,
 
-    MatCardModule,
     MatExpansionModule,
-    MatTabsModule,
 
-    NgxChartsModule,
-
-    RiskDriverModule,
+    FinancialsReportModule,
   ],
   declarations: [CreditReportComponent],
   exports: [CreditReportComponent]

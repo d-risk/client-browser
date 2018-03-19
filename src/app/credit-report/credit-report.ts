@@ -1,31 +1,37 @@
+import {CompanyInfo} from "./company-info";
+
 export interface CreditReport {
   companyId: string
   creditReportScore: number
   creditReportRating: string
   creditReportDate: Date
-  financialReports: FinancialReport[]
+  financialsReports: FinancialsReport[]
 }
 
-export interface FinancialReport {
-  financialReportDate: Date
-  financials: Financial[]
+export interface FinancialsReport {
+  financialsReportDate: Date
+  financialsNumbers: FinancialNumber[]
   riskDrivers: RiskDriver[]
 }
 
-export interface Financial {
+export interface FinancialNumber {
   name: string
   unit: string
   value: number
 }
 
 export interface RiskDriver {
-  name: string
+  category: string
   unit: string
-  latest: number
-  maximum: number
-  minimum: number
-  average: number
-  industryAverage: number
+  numbers: RiskDriverNumber[]
 }
 
+export interface RiskDriverNumber {
+  name: string
+  value: number
+}
 
+export interface CompleteReport {
+  company: CompanyInfo
+  creditReports: CreditReport[]
+}

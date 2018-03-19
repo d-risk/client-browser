@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-import {CreditReport} from "../../../credit-report/credit-report";
+import {CompleteReport, CreditReport} from "../../../credit-report/credit-report";
+import {CompanyInfo} from "../../../credit-report/company-info";
 
 @Component({
   selector: 'app-credit-report',
@@ -10,16 +11,28 @@ import {CreditReport} from "../../../credit-report/credit-report";
 })
 export class CreditReportComponent implements OnInit {
 
-  @Input() creditReports$: Observable<CreditReport[]>;
-  creditReports: CreditReport[];
+  @Input() completeReport$: Observable<CompleteReport>;
+  completeReport: CompleteReport;
 
   ngOnInit() {
-    this.creditReports$
-      .subscribe(value => this.creditReports = value);
+    this.completeReport$
+      .subscribe(value => this.completeReport = value);
+  }
+
+  company(): CompanyInfo {
+    return this.completeReport.company
+  }
+
+  creditReports(): CreditReport[] {
+    return this.completeReport.creditReports.map(value => value).sort(this.compare)
   }
 
   formatDate(s: string): string {
     return new Date(s).toDateString()
+  }
+
+  compare(a: CreditReport, b: CreditReport): number {
+    return new Date(b.creditReportDate).getTime() - new Date(a.creditReportDate).getTime()
   }
 
 }

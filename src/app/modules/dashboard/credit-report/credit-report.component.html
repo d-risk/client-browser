@@ -1,42 +1,18 @@
-<div *ngIf="creditReports">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Company Name</mat-card-title>
-      <mat-card-subtitle></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-expansion-panel *ngFor="let creditReport of creditReports">
-        <mat-expansion-panel-header>
-          <!--<mat-card-title>{{creditReport.companyId}}</mat-card-title>-->
-          <mat-panel-title>
-            Credit Score: {{creditReport.creditRating.score}}, Rating: {{creditReport.creditRating.text}}<br/>
-            as of {{formatDate(creditReport.creditRating.date)}}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <app-risk-driver [riskDrivers]="creditReport.riskDrivers"></app-risk-driver>
-      </mat-expansion-panel>
-    </mat-card-content>
-  </mat-card>
-  <!--
-    <mat-card>
-      <mat-tab-group>
-        <mat-tab *ngFor="let stat of creditReports[0].stats" [label]="stat.name">
-          <ngx-charts-line-chart
-            [view]="[700, 400]"
-            [scheme]="{domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']}"
-            [results]="stat.data"
-            gradient="true"
-            xAxis="true"
-            yAxis="true"
-            legend="false"
-            showXAxisLabel="true"
-            showYAxisLabel="true"
-            [xAxisLabel]="stat.xAxisLabel"
-            [yAxisLabel]="stat.yAxisLabel"
-            autoScale="true">
-          </ngx-charts-line-chart>
-        </mat-tab>
-      </mat-tab-group>
-    </mat-card>
-  -->
-</div>
+<ng-container *ngIf="completeReport">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{company().name}}</mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Industry:<br/>{{company().industry}}</p>
+    <p>Description:<br/>{{company().description}}</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel *ngFor="let creditReport of creditReports()">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Credit Score: {{creditReport.creditReportScore}}, Rating: {{creditReport.creditReportRating}}<br/>
+        as of {{formatDate(creditReport.creditReportDate)}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-financials-report [financialsReports]="creditReport.financialsReports"></app-financials-report>
+  </mat-expansion-panel>
+</ng-container>

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatCardModule, MatExpansionModule, MatTableModule} from "@angular/material";
+import {MatExpansionModule, MatTableModule} from "@angular/material";
 
 import {RiskDriverComponent} from './risk-driver.component';
 
@@ -10,7 +10,6 @@ import {RiskDriverComponent} from './risk-driver.component';
     CommonModule,
     BrowserAnimationsModule,
 
-    MatCardModule,
     MatExpansionModule,
     MatTableModule,
   ],
