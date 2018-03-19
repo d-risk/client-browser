@@ -24,14 +24,14 @@ export class CreditReportComponent implements OnInit {
   }
 
   creditReports(): CreditReport[] {
-    return this.completeReport.creditReports.map(value => value).sort(this.compare)
+    return this.completeReport.creditReports.map(value => value).sort(CreditReportComponent.sortByCreditReportDate)
   }
 
   formatDate(s: string): string {
     return new Date(s).toDateString()
   }
 
-  compare(a: CreditReport, b: CreditReport): number {
+  static sortByCreditReportDate(a: CreditReport, b: CreditReport): number {
     return new Date(b.creditReportDate).getTime() - new Date(a.creditReportDate).getTime()
   }
 
