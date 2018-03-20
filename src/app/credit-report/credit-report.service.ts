@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/Observable";
-import {HttpLink} from "apollo-angular-link-http";
+import {HttpLink, Options} from "apollo-angular-link-http";
 import {Apollo} from "apollo-angular";
 import {InMemoryCache} from "apollo-cache-inmemory";
 import {ApolloError} from "apollo-client";
@@ -17,7 +17,7 @@ import {CompleteReport, CreditReport} from "./credit-report";
 export class CreditReportService {
 
   constructor(private config: AppConfig, private apollo: Apollo, private httpLink: HttpLink) {
-    const link = httpLink.create({
+    let link = httpLink.create(<Options>{
       uri: config.get("api.credit_report_service.uri"),
     });
     apollo.create({
