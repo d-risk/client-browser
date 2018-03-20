@@ -31,13 +31,13 @@ export class SearchBarComponent implements OnInit {
       .pipe(
         debounceTime(this._debounceTime),
         distinctUntilChanged(),
-        switchMap((value: string) => value ? this.creditReportService.companies(value) : from<CompanyInfo[]>([])),
+        switchMap((value: string) => value ? this.creditReportService.queryCompaniesByText(value) : from<CompanyInfo[]>([])),
       );
     this.completeReport$ = this._searchCreditReportsByCompanyId
       .pipe(
         debounceTime(this._debounceTime),
         distinctUntilChanged(),
-        switchMap((value: CompanyInfo) => value ? this.creditReportService.reports(value.id) : empty<CompleteReport>()),
+        switchMap((value: CompanyInfo) => value ? this.creditReportService.queryCreditReportsByCompanyId(value.id) : empty<CompleteReport>()),
       );
   }
 

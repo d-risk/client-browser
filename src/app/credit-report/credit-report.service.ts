@@ -27,23 +27,10 @@ export class CreditReportService {
     });
   }
 
-  companies(companyName: string): Observable<CompanyInfo[]> {
-    const query = gql`
-    query CompaniesByText($companyName: String!) {
-      companies(companyName: $companyName) {
-        id
-        name
-      }
-    }`;
-    type T = {
-      companies: CompanyInfo[]
-    }
-    type V = {
-      companyName: string
-    }
+  queryCompaniesByText(companyName: string): Observable<CompanyInfo[]> {
     return this.apollo
-      .query<T, V>({
-        query: query,
+      .query<CompaniesByTextType, CompaniesByTextVariables>({
+        query: QueryCompaniesByText,
         variables: {companyName: companyName},
       })
       .pipe(
@@ -52,8 +39,47 @@ export class CreditReportService {
       .map(value => value.data.companies);
   }
 
-  reports(companyId: string): Observable<CompleteReport> {
-    const query = gql`
+  queryCreditReportsByCompanyId(companyId: string): Observable<CompleteReport> {
+    return this.apollo
+      .query<CreditReportsByCompanyIdType, CreditReportsByCompanyIdVariables>({
+        query: QueryCreditReportsByCompanyId,
+        variables: {companyId: companyId},
+      })
+      .pipe(
+        catchError(this.error),
+      )
+      .map(value => {
+        return {company: value.data.company, creditReports: value.data.creditReports};
+      });
+  }
+
+  private error(err: ApolloError) {
+    err.graphQLErrors.forEach(value => console.log(value));
+    if (err.networkError) {
+      console.log(err.networkError);
+    }
+    return from([])
+  }
+
+}
+
+const QueryCompaniesByText = gql`
+    query CompaniesByText($companyName: String!) {
+      companies(companyName: $companyName) {
+        id
+        name
+      }
+    }`;
+
+interface CompaniesByTextType {
+  companies: CompanyInfo[]
+}
+
+interface CompaniesByTextVariables {
+  companyName: string
+}
+
+const QueryCreditReportsByCompanyId = gql`
     query CreditReportsByCompanyId($companyId: UUID!) {
       company(id: $companyId) {
         id
@@ -82,35 +108,12 @@ export class CreditReportService {
         }
       }
     }`;
-    type T = {
-      company: CompanyInfo
-      creditReports: CreditReport[]
-    }
-    type V = {
-      companyId: string
-    }
 
-    return this.apollo
-      .query<T, V>({
-        query: query,
-        variables: {companyId: companyId},
-      })
-      .pipe(
-        catchError(this.error),
-      )
-      .map(value => {
-        return {company: value.data.company, creditReports: value.data.creditReports};
-      });
-  }
+interface CreditReportsByCompanyIdType {
+  company: CompanyInfo
+  creditReports: CreditReport[]
+}
 
-  private error(err: ApolloError) {
-    // console.log(err.message)
-    err.graphQLErrors.forEach(value => console.log(value));
-    if (err.networkError) {
-      console.log(err.networkError);
-    }
-    // console.log(err.extraInfo)
-    return from([])
-  }
-
+interface CreditReportsByCompanyIdVariables {
+  companyId: string
 }
