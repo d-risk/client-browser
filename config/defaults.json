@@ -1,10 +1,10 @@
 {
-  "title": "D-Risk Technology",
+  "app.title": "D-Risk Technology",
   "auth0.clientID": "htdxz-TRG5uNR7pTwJInYBsY1xp0BSSn",
   "auth0.domain": "test-d-risk-tech.auth0.com",
   "auth0.responseType": "token",
   "auth0.audience": "https://test-d-risk-tech.auth0.com/userinfo",
   "auth0.redirectUri": "https://test.d-risk.tech/login",
   "auth0.scope": "openid profile",
-  "api.credit_report_service.uri": "http://localhost:8000/graphql/"
+  "credit_report_service.uri": "http://localhost:8000/graphql/"
 }

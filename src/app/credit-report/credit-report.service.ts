@@ -17,8 +17,9 @@ import {CompleteReport, CreditReport} from "./credit-report";
 export class CreditReportService {
 
   constructor(private config: AppConfig, private apollo: Apollo, private httpLink: HttpLink) {
+    let uri = config.get("credit_report_service.uri");
     let link = httpLink.create(<Options>{
-      uri: config.get("api.credit_report_service.uri"),
+      uri: uri,
     });
     apollo.create({
       link: link,

@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.title.setTitle(this.config.get("title"));
+    this.title.setTitle(this.config.get('app.title'));
     this.authenticationService.handleAuthentication();
   }
 
