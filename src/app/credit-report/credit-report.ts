@@ -10,11 +10,11 @@ export interface CreditReport {
 
 export interface FinancialsReport {
   financialsReportDate: Date
-  financialsNumbers: FinancialNumber[]
+  financials: Financials[]
   riskDrivers: RiskDriver[]
 }
 
-export interface FinancialNumber {
+export interface Financials {
   name: string
   unit: string
   value: number
@@ -23,10 +23,10 @@ export interface FinancialNumber {
 export interface RiskDriver {
   category: string
   unit: string
-  numbers: RiskDriverNumber[]
+  data: RiskDriverData[]
 }
 
-export interface RiskDriverNumber {
+export interface RiskDriverData {
   name: string
   value: number
 }

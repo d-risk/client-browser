@@ -94,13 +94,15 @@ const QueryCreditReportsByCompanyId = gql`
         creditReportDate
         financialsReports {
           financialsReportDate
-          financialsNumbers {
+          financials {
             name
+            unit
             value
           }
           riskDrivers {
             category
-            numbers {
+            unit
+            data {
               name
               value
             }

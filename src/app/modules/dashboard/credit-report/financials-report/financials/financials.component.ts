@@ -20,7 +20,7 @@ export class FinancialsComponent implements OnInit {
 
     this.financialsReports.forEach(report => {
         dates.add(report.financialsReportDate);
-        report.financialsNumbers.forEach(financials => {
+        report.financials.forEach(financials => {
           let data = this.dataSource.find(value => value.name.localeCompare(financials.name) === 0);
           if (!data) {
             data = {name: financials.name, years: new Map()};

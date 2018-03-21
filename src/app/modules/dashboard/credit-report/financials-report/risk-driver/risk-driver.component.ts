@@ -26,7 +26,7 @@ export class RiskDriverComponent implements OnInit {
             data = {category: riskDriver.category, names: new Map()};
             this.dataSource.push(data);
           }
-          riskDriver.numbers.forEach(value => getOrSet(data.names, value.name, Map).set(report.financialsReportDate, value.value));
+          riskDriver.data.forEach(value => getOrSet(data.names, value.name, Map).set(report.financialsReportDate, value.value));
         });
       }
     );
