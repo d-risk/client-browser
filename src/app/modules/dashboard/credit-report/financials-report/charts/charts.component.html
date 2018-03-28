@@ -1,0 +1,43 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>Charts</mat-expansion-panel-header>
+  <mat-tab-group>
+    <ng-container *ngFor="let element of financials">
+      <mat-tab label="Financials - {{element.name}}">
+        <ngx-charts-line-chart
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="element.data"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="element.name"
+          [autoScale]="autoScale"
+          (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+      </mat-tab>
+    </ng-container>
+    <ng-container *ngFor="let element of riskDrivers">
+      <mat-tab label="Risk Drivers - {{element.name}}">
+        <ngx-charts-line-chart
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="element.data"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="element.name"
+          [autoScale]="autoScale"
+          (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+      </mat-tab>
+    </ng-container>
+  </mat-tab-group>
+</mat-expansion-panel>
