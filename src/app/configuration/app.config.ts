@@ -21,20 +21,20 @@ export class AppConfig {
   }
 
   load() {
-    return new Promise((resolve) => {
-        this.http
-          .get<Configuration>(this._config_file, {observe: 'body'})
-          .subscribe(response => {
-              this._config = response;
-              console.log('Loading file "config.json": ' + JSON.stringify(this._config));
-              resolve(true);
-            },
-            error => {
-              console.log('Unable to load file "config.json": ' + JSON.stringify(error));
-              resolve(true);
-            }
-          );
-      }
-    );
+    // return new Promise((resolve) => {
+    //     this.http
+    //       .get<Configuration>(this._config_file, {observe: 'body'})
+    //       .subscribe(response => {
+    //           this._config = response;
+    //           console.log('Loading file "config.json": ' + JSON.stringify(this._config));
+    //           resolve(true);
+    //         },
+    //         error => {
+    //           console.log('Unable to load file "config.json": ' + JSON.stringify(error));
+    //           resolve(true);
+    //         }
+    //       );
+    //   }
+    // );
   }
 }
