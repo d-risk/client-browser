@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {AboutComponent} from './about.component';
 
 @NgModule({
@@ -8,4 +8,5 @@ import {AboutComponent} from './about.component';
   ],
   declarations: [AboutComponent]
 })
-export class AboutModule { }
+export class AboutModule {
+}

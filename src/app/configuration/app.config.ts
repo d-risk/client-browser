@@ -10,6 +10,8 @@ export interface Configuration {
 @Injectable()
 export class AppConfig {
   private _defaults: Configuration = require('../../../config/defaults.json');
+  private _staging: Configuration = require('../../../config/staging.json');
+  private _production: Configuration = require('../../../config/production.json');
   private _config_file = './assets/config.json';
   private _config: Configuration;
 

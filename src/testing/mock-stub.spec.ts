@@ -2,7 +2,7 @@
 // import {Component} from '@angular/core';
 // import {AppConfig} from '../app/configuration/app.config';
 // import {Auth0Factory} from '../app/authentication/auth0.factory';
-// import {CreditRatingService} from "../app/credit-rating/credit-rating.service";
+// import {CreditReportService} from "../app/credit-rating/credit-rating.service";
 //
 // export function createMockAuthenticationService(): AuthenticationService {
 //   return jasmine.createSpyObj<AuthenticationService>(
@@ -11,12 +11,12 @@
 //   );
 // }
 //
-// export function createMockCompanyService(): CreditRatingService {
-//   return jasmine.createSpyObj<CreditRatingService>('companyService', ['search']);
+// export function createMockCompanyService(): CreditReportService {
+//   return jasmine.createSpyObj<CreditReportService>('companyService', ['search']);
 // }
 //
-// export function createMockProfileService(): CreditRatingService {
-//   return jasmine.createSpyObj<CreditRatingService>('profileService', ['search']);
+// export function createMockProfileService(): CreditReportService {
+//   return jasmine.createSpyObj<CreditReportService>('profileService', ['search']);
 // }
 //
 // export function createMockAppConfig(): AppConfig {

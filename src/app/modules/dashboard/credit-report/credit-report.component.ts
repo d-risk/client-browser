@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 import {CompleteReport, CreditReport} from "../../../credit-report/credit-report";
 import {CompanyInfo} from "../../../credit-report/company-info";

@@ -6,7 +6,7 @@ import {AppConfig} from '../configuration/app.config';
 
 @Injectable()
 export class Auth0Factory {
-  private _auth0;
+  private readonly _auth0;
 
   constructor(private config: AppConfig) {
     this._auth0 = new auth0.WebAuth({

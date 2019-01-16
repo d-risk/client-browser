@@ -9,14 +9,14 @@ import {Component} from "@angular/core";
   selector: 'app-navigation',
   template: '',
 })
-export class MockNavigationComponent  {
+export class MockNavigationComponent {
 }
 
 @Component({
   selector: 'app-footer',
   template: '',
 })
-export class MockFooterComponent  {
+export class MockFooterComponent {
 }
 
 describe('AppComponent', () => {

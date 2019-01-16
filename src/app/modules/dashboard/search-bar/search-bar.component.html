@@ -1,6 +1,7 @@
 <mat-form-field>
   <mat-label>Enter a company's name</mat-label>
-  <input #searchBar type="text" placeholder="Company's Name" matInput [formControl]="formControl" [matAutocomplete]="autoComplete"
+  <input #searchBar type="text" placeholder="Company's Name" matInput [formControl]="formControl"
+         [matAutocomplete]="autoComplete"
          (keyup)="searchCompaniesByName(searchBar.value)" title="Search for a Company by Name">
   <mat-autocomplete #autoComplete [displayWith]="displayWidth">
     <ng-container [ngSwitch]="(companies | async)?.length">

@@ -1,0 +1,5 @@
+{
+  "credit_report_service": {
+    "uri": "http://api.test.d-risk.tech/graphql/"
+  }
+}

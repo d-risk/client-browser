@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
-import {from} from "rxjs/observable/from";
-import {empty} from "rxjs/observable/empty";
+import {EMPTY as empty, from, Observable, Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
 
 import {CompanyInfo} from "../../../credit-report/company-info";
@@ -37,7 +34,7 @@ export class SearchBarComponent implements OnInit {
       .pipe(
         debounceTime(this._debounceTime),
         distinctUntilChanged(),
-        switchMap((value: CompanyInfo) => value ? this.creditReportService.queryCreditReportsByCompanyId(value.id) : empty<CompleteReport>()),
+        switchMap((value: CompanyInfo) => value ? this.creditReportService.queryCreditReportsByCompanyId(value.id) : empty),
       );
   }
 

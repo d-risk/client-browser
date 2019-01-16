@@ -56,7 +56,7 @@ export class ChartsComponent implements OnInit {
 
   private parseRiskDrivers(array: RiskDriver[], date: Date): void {
     array.forEach(driver => {
-      let unitType: string = driver.unit
+      let unitType: string = driver.unit;
       let unit: Unit = getOrSet(unitType, this.riskDriversUnitsMap, this.riskDrivers, {name: unitType, data: []});
       let name: string = driver.category;
       let data: Data = getOrSet(name, this.riskDriversDataMap, unit.data, {name: name, series: []});

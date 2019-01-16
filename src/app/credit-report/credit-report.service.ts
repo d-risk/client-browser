@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-import {Observable} from "rxjs/Observable";
+import {from, Observable} from "rxjs";
 import {HttpLink, Options} from "apollo-angular-link-http";
 import {Apollo} from "apollo-angular";
 import {InMemoryCache} from "apollo-cache-inmemory";
 import {ApolloError} from "apollo-client";
-import {catchError} from "rxjs/operators";
-import {from} from "rxjs/observable/from";
+import {catchError, map} from "rxjs/operators";
 
 import gql from "graphql-tag";
 
@@ -35,8 +34,8 @@ export class CreditReportService {
       })
       .pipe(
         catchError(this.error),
-      )
-      .map(value => value.data.companies);
+        map(value => value.data.companies)
+      );
   }
 
   queryCreditReportsByCompanyId(companyId: string): Observable<CompleteReport> {
@@ -47,10 +46,10 @@ export class CreditReportService {
       })
       .pipe(
         catchError(this.error),
-      )
-      .map(value => {
-        return {company: value.data.company, creditReports: value.data.creditReports};
-      });
+        map(value => {
+          return {company: value.data.company, creditReports: value.data.creditReports};
+        })
+      );
   }
 
   private error(err: ApolloError) {

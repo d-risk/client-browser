@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RiskDriverComponent } from './risk-driver.component';
+import {RiskDriverComponent} from './risk-driver.component';
 
 describe('RiskDriverComponent', () => {
   let component: RiskDriverComponent;
@@ -8,9 +8,9 @@ describe('RiskDriverComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RiskDriverComponent ]
+      declarations: [RiskDriverComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

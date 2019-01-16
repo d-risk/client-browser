@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 
-import 'rxjs/add/operator/map';
 
 import {Auth0Factory} from './auth0.factory';
 
